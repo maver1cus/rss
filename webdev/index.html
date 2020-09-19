@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Webdev</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Webdev</title>
 </head>
 <body>
-    
+<div class="wrapper">
+  <header class="page-header">
+    <h1 class="page-header__title">webdev</h1>
+    <div class="page-header__logo"><img src="assets/img/logo.svg" alt="webdev"></div>
+    <nav class="page-header__menu main-menu">
+      <ul class="main-menu__list">
+        <li class="main-menu__item">
+          <a href="#" class="main-menu__link main-menu__link--active">About</a>
+        </li>
+        <li class="main-menu__item">
+          <a href="#" class="main-menu__link">Syllabus</a>
+        </li>
+        <li class="main-menu__item">
+          <a href="#" class="main-menu__link">Projects</a>
+        </li>
+        <li class="main-menu__item">
+          <a href="#" class="main-menu__link">FAQ</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="promo">
+      <div class="promo__bg">
+        <img src="assets/img/bg-promo.jpg" alt="">
+      </div>
+      <div class="promo__content">
+        <h2 class="promo__title">your life is WebDev</h2>
+        <p class="promo__text">Whatever the approach to development may be, the final program must satisfy some fundamental properties</p>
+        <button class="promo__btn btn">get started</button>
+        <ul class="promo__social social">
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="assets/img/email.svg" alt="email">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="assets/img/facebook.svg" alt="facebook">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="assets/img/instagram.svg" alt="instagram">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="assets/img/youtube.svg" alt="youtube">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
 </body>
 </html>
