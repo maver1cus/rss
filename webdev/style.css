@@ -264,15 +264,18 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Стили для логотипа*/
+.logo {
   width: 44px;
 }
 
-.page-header__logo img {
+.logo img {
   width: 100%;
 }
 
 /* стили для главного меню .main-menu */
-
 .main-menu {
   height: 96px;
 }
@@ -686,4 +689,68 @@ img {
 
 .download__btn {
   margin: 0 15px;
+}
+
+/* Стили для футера*/
+.page-footer {
+  padding: 60px 0 79px 0;
+  background-color: #000;
+}
+
+.page-footer__wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.page-footer__logo {
+  margin: 0 auto 0 382px;
+}
+.page-footer__copyright {
+  font-size: 14px;
+  color: #818181;
+}
+
+/* Стили для меню в футаре*/
+.second-menu__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 -20px;
+  padding: 0;
+  list-style: none;
+}
+
+.second-menu__item {
+  position: relative;
+  padding: 0 20px;
+}
+
+.second-menu__item:after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: block;
+  content: '';
+  width: 1px;
+  height: 8px;
+  margin-top: -4px;
+  background-color: #4E4E4E;
+}
+
+.second-menu__item:last-child:after { display: none;}
+
+.second-menu__link {
+  font-size: 14px;
+  color: #FFFFFF;
+  text-decoration: none;
+  opacity: 0.98;
+}
+
+.second-menu__link:hover {
+  color: #a7ff90;
+  cursor: pointer;
+  text-decoration: underline;
 }
