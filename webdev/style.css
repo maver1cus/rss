@@ -375,3 +375,52 @@ body {
 .social__link img {
   width: 100%;
 }
+
+/*стили для текстового блока text-block */
+
+.text-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1062px;
+  width: 66.37500%;
+  margin: 0 auto;
+  padding: 120px 0 140px 0;
+}
+.text-block__content {
+  width: 50%;
+}
+
+.text-block__content-wrapper {
+  max-width: 406px;
+  padding-top: 155px;
+}
+
+.text-block__title {
+  max-width: 370px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.text-block__text {
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4E4E4E;
+}
+
+.text-block__text strong {
+  font-weight: 500;
+  color: #373737;
+}
+
+.text-block__image {
+  width: 50%;
+  font-size: 0;
+  text-align: right;
+}
