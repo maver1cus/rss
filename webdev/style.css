@@ -553,3 +553,74 @@ img {
   width: 100%;
   height: 100%;
 }
+
+/* стиля для блока subscribe */
+.subscribe {
+  position: relative;
+  padding: 193px 0 275px 0;
+}
+
+.subscribe__wrapper {
+  position: relative;
+  max-width: 406px;
+  margin: 0 auto;
+  z-index: 2;
+}
+.subscribe__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.subscribe__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.subscribe__title {
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.subscribe__forma {
+  display: flex;
+  width: 100%;
+}
+
+.subscribe__input {
+  width: 100%;
+  padding-left: 24px;
+  font-size: 14px;
+  color: #373737;
+  border: none;
+  outline: none;
+
+}
+
+.subscribe__btn {
+  width: 83px;
+  height: 46px;
+  padding: 0;
+  font-size: 0;
+  background: #00AFDB;
+  border: none;
+}
+
+.subscribe__btn:hover {
+  background-color: #009CC2;
+  cursor: pointer;
+}
+
+.subscribe__btn:hover .subscribe__btn-icon{
+  fill: #008000;
+}
