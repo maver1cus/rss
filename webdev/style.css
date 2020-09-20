@@ -218,14 +218,10 @@ body {
 
 .btn--icon {
   display: flex;
-  width: 188px;
-  height: 50px;
+  width: 186px;
+  height: 46px;
   padding: 0;
   line-height: 50px;
-}
-
-.btn--icon:hover svg {
-  fill: #008000;
 }
 
 .btn__text {
@@ -237,7 +233,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 82px;
-  height: 50px;
+  height: 46px;
   background-color: #009CC2;
 }
 
@@ -284,16 +280,16 @@ body {
   justify-content: center;
   align-items: center;
   height: 96px;
-  margin: 0 -42px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .main-menu__item {
-  padding: 0 42px;
+  margin-right: 85px;
 }
-.main-menu__item:nth-child(2) { padding-right: 124px; }
-.main-menu__item:nth-child(3) { padding-left: 134px; }
+.main-menu__item:nth-child(2) { margin-right: 244px; }
+.main-menu__item:last-child { margin-right: 0; }
 
 .main-menu__link {
   position: relative;
@@ -421,7 +417,7 @@ body {
 }
 
 .text-block--reverse .text-block__content-wrapper {
-  padding: 172px 0 0 15px;
+  padding: 178px 0 0 15px;
 }
 .text-block__content {
   width: 50%;
@@ -472,7 +468,6 @@ body {
 .сommunity__wrapper {
   position: relative;
   display: flex;
-  align-items: center;
   max-width: 1062px;
   width: 66.37500%;
   margin: 0 auto;
@@ -482,16 +477,16 @@ body {
 .сommunity__content {
   flex: 1 0 298px;
   margin-right: 139px;
+  padding-top: 32px;
 }
 
 .сommunity__avatar {
-  margin: 0 auto;
   width: 45px;
   height: 45px;
+  margin: 0 auto 20px auto;
   font-size: 0;
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
 .community__title {
@@ -521,8 +516,8 @@ img {
 /* стиля для слайдера */
 .slider__nav {
   position: absolute;
-  top: 73px;
-  right: 0;
+  top: 76px;
+  right: 2px;
   display: flex;
   align-items: center;
 }
@@ -552,6 +547,7 @@ img {
 
 .slider__btn:hover {
   cursor: pointer;
+  opacity: .5;
 }
 
 .slider__count {
@@ -561,8 +557,6 @@ img {
   color: #373737;
 }
 
-.slider__btn--prev:hover { transform: rotate(-45deg) scale(1.2); }
-.slider__btn--next:hover { transform: rotate(135deg) scale(1.2); }
 .slider__list {
   display: flex;
   margin: 0 -15px;
@@ -585,7 +579,7 @@ img {
 /* стиля для блока subscribe */
 .subscribe {
   position: relative;
-  padding: 193px 0 275px 0;
+  padding: 180px 0 220px 0;
 }
 
 .subscribe__wrapper {
@@ -601,12 +595,11 @@ img {
   bottom: 0;
   left: 0;
   z-index: 1;
+  overflow: hidden;
 }
 
 .subscribe__bg img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .subscribe__title {
@@ -632,9 +625,8 @@ img {
   color: #373737;
   border: none;
   outline: none;
-
 }
-
+.subscribe__input::placeholder { opacity: .5; }
 .subscribe__btn {
   width: 83px;
   height: 46px;
@@ -649,12 +641,8 @@ img {
   cursor: pointer;
 }
 
-.subscribe__btn:hover .subscribe__btn-icon{
-  fill: #008000;
-}
-
 .download {
-  padding: 100px 0 180px 0;
+  padding: 98px 0 180px 0;
   background-color: #F5F6F7;
 }
 .download__wrapper {
@@ -663,7 +651,7 @@ img {
 }
 
 .download__title {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
