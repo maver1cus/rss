@@ -1,12 +1,27 @@
-let fitstOperand = ''
-let currentOperand = '0'
-let currentOperation = ''
+let fitstOperand = '';
+let currentOperand = '0';
+let currentOperation = '';
+let error = false;
+
 const calculatorGrid = document.querySelector('.calculator-grid')
 const mainDisplay = document.querySelector('.current-operand')
 const secondDisplay = document.querySelector('.previous-operand')
+const displayError = document.querySelector('.error');
 
 const showToMainDisplay = str => mainDisplay.textContent = str
 const showToSecondDisplay = str => secondDisplay.textContent = str
+
+const showError = (msg) => {
+  error = true;
+  displayError.textContent = msg;
+  displayError.classList.add('show');
+}
+
+const hideError = () => {
+  error = false;
+  displayError.textContent = '';
+  displayError.classList.remove('show')
+}
 
 const inputNumber = (number) => {
   currentOperand = (currentOperand.toString() === '0')
@@ -92,10 +107,15 @@ const equals = () => {
 }
 
 showToMainDisplay(currentOperand)
+showError('На ноль делить нельзя');
+error = true;
+
 
 calculatorGrid.addEventListener('click', (evt) => {
   const btnType = evt.target.dataset.type
   const btnValue = evt.target.dataset.value
+
+  if (error) hideError();
 
   switch(btnType) {
     case 'number':
@@ -122,6 +142,9 @@ calculatorGrid.addEventListener('click', (evt) => {
 })
 
 document.addEventListener('keydown', function(event) {
+
+  if (error) hideError();
+
   if (event.key >= 0 && event.key <= 9) {
     inputNumber(event.key)
   }
