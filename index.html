@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculator</title>
+</head>
+<body>
+<div class="calculator-grid">
+  <div class="output">
+    <div class="error"></div>
+    <div data-previous-operand class="previous-operand"></div>
+    <div data-current-operand class="current-operand"></div>
+  </div>
+  <button data-type="all-clear">AC</button>
+  <button data-type="delete" data-value="DEL">DEL</button>
+  <button data-type="operation" data-value="**">x**y</button>
+  <button data-type="operation" data-value="sqrt">&radic;</button>
+  <button data-type="number" data-value="1">1</button>
+  <button data-type="number" data-value="2">2</button>
+  <button data-type="number" data-value="3">3</button>
+  <button data-type="operation" data-value="*">*</button>
+  <button data-type="number" data-value="4">4</button>
+  <button data-type="number" data-value="5">5</button>
+  <button data-type="number" data-value="6">6</button>
+  <button data-type="operation" data-value="/">÷</button>
+  <button data-type="number" data-value="7">7</button>
+  <button data-type="number" data-value="8">8</button>
+  <button data-type="number" data-value="9">9</button>
+  <button data-type="operation" data-value="+">+</button>
+  <button data-type="point" data-value=".">.</button>
+  <button data-type="number" data-value="0">0</button>
+  <button data-type="equals">=</button>
+  <button data-type="operation" data-value="-">-</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
