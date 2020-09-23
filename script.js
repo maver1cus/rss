@@ -46,15 +46,17 @@ const choiceOperation = (operationName) => {
   } else if (operationName === 'sqrt' && Number(currentOperand) <= 0) {
     showError(ERROR_MESSAGE.sqrtOfNegative)
   } else if (operationName === '-' && currentOperand === '0') {
-    currentOperand = '-'
+    currentOperand = currentOperation === '-' ? currentOperand : '-';
     showToMainDisplay(currentOperand)
   } else if (fitstOperand && currentOperation) {
+    console.log(12)
     currentOperation = operationName
     fitstOperand = calculate()
     currentOperand = '0'
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay(`${fitstOperand} ${currentOperation}`)
   } else {
+    console.log(13)
     currentOperation = operationName
     fitstOperand = currentOperand
     currentOperand = '0'
