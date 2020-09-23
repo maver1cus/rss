@@ -8,6 +8,13 @@ const mainDisplay = document.querySelector('.current-operand')
 const secondDisplay = document.querySelector('.previous-operand')
 const displayError = document.querySelector('.error');
 
+let fitstOperand = ''
+let currentOperand = '0'
+let currentOperation = ''
+const calculatorGrid = document.querySelector('.calculator-grid')
+const mainDisplay = document.querySelector('.current-operand')
+const secondDisplay = document.querySelector('.previous-operand')
+
 const showToMainDisplay = str => mainDisplay.textContent = str
 const showToSecondDisplay = str => secondDisplay.textContent = str
 
@@ -108,7 +115,6 @@ const equals = () => {
 
 showToMainDisplay(currentOperand)
 
-
 calculatorGrid.addEventListener('click', (evt) => {
   const btnType = evt.target.dataset.type
   const btnValue = evt.target.dataset.value
@@ -140,9 +146,7 @@ calculatorGrid.addEventListener('click', (evt) => {
 })
 
 document.addEventListener('keydown', function(event) {
-
   if (error) hideError();
-
   if (event.key >= 0 && event.key <= 9) {
     inputNumber(event.key)
   }
