@@ -8,13 +8,6 @@ const mainDisplay = document.querySelector('.current-operand')
 const secondDisplay = document.querySelector('.previous-operand')
 const displayError = document.querySelector('.error');
 
-let fitstOperand = ''
-let currentOperand = '0'
-let currentOperation = ''
-const calculatorGrid = document.querySelector('.calculator-grid')
-const mainDisplay = document.querySelector('.current-operand')
-const secondDisplay = document.querySelector('.previous-operand')
-
 const showToMainDisplay = str => mainDisplay.textContent = str
 const showToSecondDisplay = str => secondDisplay.textContent = str
 
