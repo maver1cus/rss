@@ -1,25 +1,31 @@
-let fitstOperand = '';
-let currentOperand = '0';
-let currentOperation = '';
-let error = false;
+const ERROR_MESSAGE = {
+  sqrtOfNegative: 'корня из отрицательного числа нет',
+  divisioZero: 'на ноль делить нельзя'
+}
+
+let fitstOperand = ''
+let currentOperand = '0'
+let currentOperation = ''
+let error = false
 
 const calculatorGrid = document.querySelector('.calculator-grid')
 const mainDisplay = document.querySelector('.current-operand')
 const secondDisplay = document.querySelector('.previous-operand')
-const displayError = document.querySelector('.error');
+const displayError = document.querySelector('.error')
 
 const showToMainDisplay = str => mainDisplay.textContent = str
 const showToSecondDisplay = str => secondDisplay.textContent = str
 
 const showError = (msg) => {
-  error = true;
-  displayError.textContent = msg;
-  displayError.classList.add('show');
+  clear()
+  error = true
+  displayError.textContent = msg
+  displayError.classList.add('show')
 }
 
 const hideError = () => {
-  error = false;
-  displayError.textContent = '';
+  error = false
+  displayError.textContent = ''
   displayError.classList.remove('show')
 }
 
@@ -31,7 +37,15 @@ const inputNumber = (number) => {
 }
 
 const choiceOperation = (operationName) => {
-  if (operationName === '-' && currentOperand === '0') {
+  if (operationName === 'sqrt' && Number(currentOperand) >= 0) {
+    currentOperand = Math.sqrt(Number(currentOperand)).toString()
+    fitstOperand = ''
+    currentOperation = ''
+    showToSecondDisplay('')
+    showToMainDisplay(currentOperand)
+  } else if (operationName === 'sqrt' && Number(currentOperand) <= 0) {
+    showError(ERROR_MESSAGE.sqrtOfNegative)
+  } else if (operationName === '-' && currentOperand === '0') {
     currentOperand = '-'
     showToMainDisplay(currentOperand)
   } else if (fitstOperand && currentOperation) {
@@ -58,16 +72,17 @@ const clear = () => {
 }
 
 const calculate = () => {
-  if (fitstOperand === '' || currentOperand === '0' || currentOperation === '') {
-    return false
-  }
-  let result
+  let result = '0'
   switch(currentOperation) {
     case '-':
       result = Number(fitstOperand) - Number(currentOperand)
       break
     case '/':
-      result = Number(fitstOperand) / Number(currentOperand)
+      if (Number(currentOperand) === 0) {
+        showError(ERROR_MESSAGE.divisioZero)
+      } else {
+        result = Number(fitstOperand) / Number(currentOperand)
+      }
       break
     case '*':
       result = Number(fitstOperand) * Number(currentOperand)
@@ -75,10 +90,12 @@ const calculate = () => {
     case '+':
       result = Number(fitstOperand) + Number(currentOperand)
       break
+    case '**':
+      result = Number(fitstOperand) ** Number(currentOperand)
+      break
     default:
       break
   }
-
   return result
 }
 
@@ -97,7 +114,7 @@ const inputPoint = () => {
 }
 
 const equals = () => {
-  if (fitstOperand && currentOperation && currentOperand !== '0') {
+  if (fitstOperand && currentOperation) {
     currentOperand = calculate()
     fitstOperand = ''
     currentOperation = ''
@@ -112,7 +129,7 @@ calculatorGrid.addEventListener('click', (evt) => {
   const btnType = evt.target.dataset.type
   const btnValue = evt.target.dataset.value
 
-  if (error) hideError();
+  if (error) hideError()
 
   switch(btnType) {
     case 'number':
@@ -139,7 +156,7 @@ calculatorGrid.addEventListener('click', (evt) => {
 })
 
 document.addEventListener('keydown', function(event) {
-  if (error) hideError();
+  if (error) hideError()
   if (event.key >= 0 && event.key <= 9) {
     inputNumber(event.key)
   }
