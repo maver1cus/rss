@@ -107,8 +107,6 @@ const equals = () => {
 }
 
 showToMainDisplay(currentOperand)
-showError('На ноль делить нельзя');
-error = true;
 
 
 calculatorGrid.addEventListener('click', (evt) => {
