@@ -1,6 +1,140 @@
-header {
-  height: 100vh;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  padding: 1.5rem 4.5rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  letter-spacing: 0.06em;
+  color: #292929;
+  background-color: #f1cdb3;
+  border-radius: 10rem;
+}
+.btn--secondary {
+  background-color: transparent;
+  border: 0.2rem solid #f1cdb3;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: #FDDCC4;
+}
+
+.page-header {
+  height: 60px;
+  margin-top: 60px;
+  padding: 0;
+}
+
+.page-header__wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo__title {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.2rem;
+  line-height: 3.5rem;
+  color: #f1cdb3;
+}
+
+.logo__sub-title {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #ffffff;
+}
+
+.main-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0 -1.7rem;
+}
+
+.main-menu__item {
+  padding: 0 1.7rem;
+}
+
+.main-menu__link {
+  display: block;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #CDCDCD;
+  text-decoration: none;
+  border-bottom: 0.3rem solid transparent;
+}
+.main-menu__link:hover {
+  color: #FAFAFA;
+}
+.main-menu__link--active {
+  border-color: #f1cdb3;
+}
+
+.start-screen {
+  margin-top: -12rem;
+  padding-top: 18rem;
   background: url("../../assets/images/noise_transparent.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+}
+
+.start-screen__wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.start-screen__content {
+  width: 46rem;
+  margin-right: 4.2rem;
+  padding-top: 12.3rem;
+}
+
+.start-screen__title {
+  width: 31rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4.4rem;
+  line-height: 5.7rem;
+  color: #ffffff;
+}
+
+.start-screen__text {
+  margin-bottom: 41px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #CDCDCD;
 }
 
 /*# sourceMappingURL=style.css.map */

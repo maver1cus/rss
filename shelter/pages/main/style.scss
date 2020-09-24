@@ -1,7 +1,9 @@
 @import "./sass/abstracts/variables";
 @import "./sass/abstracts/mixins";
+@import "./sass/base/common";
+@import "./sass/components/btn";
+@import "./sass/components/page-header";
+@import "./sass/components/logo";
+@import "./sass/components/main-menu";
+@import "./sass/components/start-screen";
 
-header {
-  height: 100vh;
-  background: url('../../assets/images/noise_transparent.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
-}
