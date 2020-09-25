@@ -1,0 +1,43 @@
+.about {
+  background-color: $color-light-xl;
+  padding: 8rem 0 10rem 0;
+}
+
+.about__wrapper {
+  @include wrapper;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 17.5rem;
+}
+
+.about__image {
+  font-size: 0;
+  margin-right: 12rem;
+}
+
+.about__title {
+  margin-bottom: 2.5rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  align-items: center;
+  letter-spacing: 0.06em;
+  color: $color-light-l;
+}
+
+.about__text {
+  margin-bottom: 2.5rem;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: $color-dark-xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

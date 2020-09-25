@@ -1,0 +1,29 @@
+.pets {
+  padding: 8rem -0px 10rem -0px;
+  background-color: #F6F6F6;
+}
+
+.pets__wrapper {
+  @include wrapper;
+}
+
+.pets__title {
+  margin-bottom: 6rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: $color-dark-l
+}
+
+.pets__slider {
+  margin-bottom: 6rem;
+}
+
+.pets__btn {
+  display: block;
+  margin: 0 auto;
+}

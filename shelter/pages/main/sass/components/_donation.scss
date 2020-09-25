@@ -1,0 +1,81 @@
+.donation {
+  padding: 8rem -0px 10rem -0px;
+  background: #F6F6F6;
+}
+
+.donation__wrapper {
+  @include wrapper;
+  display: flex;
+  justify-content: center;
+}
+
+.donation__image {
+  position: relative;
+  width: 42.0833333%;
+  height: 0;
+  margin-right: 2.5%;
+  padding-top: 21.75%;
+  font-size: 0;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.donation__content {
+  width: 31.6666667%;
+}
+
+.donation__title {
+  margin-bottom: 2rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+}
+
+.donation__caption {
+  margin-bottom: 2rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+}
+
+.donation__credit-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+  text-decoration: none;
+  background: $color-primary;
+  border-radius: .9rem;
+}
+
+.donation__icon {
+  margin-right: 1.5rem;
+}
+
+.donation__text {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: $color-dark-m;
+}
