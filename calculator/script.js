@@ -2,7 +2,7 @@ const ERROR_MESSAGE = {
   sqrtOfNegative: 'корня из отрицательного числа нет',
   divisioZero: 'на ноль делить нельзя'
 }
-const FRACTION_PRECISION = 10000000;
+const FRACTION_PRECISION = 10000;
 let fitstOperand = ''
 let currentOperand = '0'
 let currentOperation = ''
@@ -56,7 +56,6 @@ const choiceOperation = (operationName) => {
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay(`${fitstOperand} ${currentOperation}`)
   } else {
-    console.log(13)
     currentOperation = operationName
     fitstOperand = currentOperand
     currentOperand = '0'
@@ -98,7 +97,7 @@ const calculate = () => {
     default:
       break
   }
-  return Math.floor(result * FRACTION_PRECISION ) / FRACTION_PRECISION
+  return Math.round(result * FRACTION_PRECISION ) / FRACTION_PRECISION
 }
 
 const deleteNumber = () => {
