@@ -49,9 +49,8 @@ const choiceOperation = (operationName) => {
     currentOperand = currentOperation === '-' ? currentOperand : '-';
     showToMainDisplay(currentOperand)
   } else if (fitstOperand && currentOperation) {
-    console.log(12)
-    currentOperation = operationName
     fitstOperand = calculate()
+    currentOperation = operationName
     currentOperand = '0'
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay(`${fitstOperand} ${currentOperation}`)
