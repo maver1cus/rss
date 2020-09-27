@@ -7,6 +7,7 @@ let fitstOperand = ''
 let currentOperand = '0'
 let currentOperation = ''
 let error = false
+let isPressEqual = false;
 
 const calculatorGrid = document.querySelector('.calculator-grid')
 const mainDisplay = document.querySelector('.current-operand')
@@ -30,6 +31,10 @@ const hideError = () => {
 }
 
 const inputNumber = (number) => {
+  if (isPressEqual) {
+    clear();
+    isPressEqual = false;
+  }
   currentOperand = (currentOperand.toString() === '0')
     ? number
     : currentOperand.toString() + number.toString()
@@ -120,6 +125,7 @@ const equals = () => {
     currentOperation = ''
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay('')
+    isPressEqual = true;
   }
 }
 
