@@ -42,6 +42,7 @@ const inputNumber = (number) => {
 }
 
 const choiceOperation = (operationName) => {
+  isPressEqual = false;
   if (operationName === 'sqrt' && Number(currentOperand) >= 0) {
     currentOperand = Math.sqrt(Number(currentOperand)).toString()
     fitstOperand = ''
