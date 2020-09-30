@@ -2,11 +2,12 @@ const ERROR_MESSAGE = {
   sqrtOfNegative: 'корня из отрицательного числа нет',
   divisioZero: 'на ноль делить нельзя'
 }
-const FRACTION_PRECISION = 10000000;
+const FRACTION_PRECISION = 10000;
 let fitstOperand = ''
 let currentOperand = '0'
 let currentOperation = ''
 let error = false
+let isPressEqual = false;
 
 const calculatorGrid = document.querySelector('.calculator-grid')
 const mainDisplay = document.querySelector('.current-operand')
@@ -30,6 +31,10 @@ const hideError = () => {
 }
 
 const inputNumber = (number) => {
+  if (isPressEqual) {
+    clear();
+    isPressEqual = false;
+  }
   currentOperand = (currentOperand.toString() === '0')
     ? number
     : currentOperand.toString() + number.toString()
@@ -37,6 +42,7 @@ const inputNumber = (number) => {
 }
 
 const choiceOperation = (operationName) => {
+  isPressEqual = false;
   if (operationName === 'sqrt' && Number(currentOperand) >= 0) {
     currentOperand = Math.sqrt(Number(currentOperand)).toString()
     fitstOperand = ''
@@ -49,14 +55,12 @@ const choiceOperation = (operationName) => {
     currentOperand = currentOperation === '-' ? currentOperand : '-';
     showToMainDisplay(currentOperand)
   } else if (fitstOperand && currentOperation) {
-    console.log(12)
-    currentOperation = operationName
     fitstOperand = calculate()
+    currentOperation = operationName
     currentOperand = '0'
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay(`${fitstOperand} ${currentOperation}`)
   } else {
-    console.log(13)
     currentOperation = operationName
     fitstOperand = currentOperand
     currentOperand = '0'
@@ -98,7 +102,7 @@ const calculate = () => {
     default:
       break
   }
-  return Math.floor(result * FRACTION_PRECISION ) / FRACTION_PRECISION
+  return Math.round(result * FRACTION_PRECISION ) / FRACTION_PRECISION
 }
 
 const deleteNumber = () => {
@@ -122,6 +126,7 @@ const equals = () => {
     currentOperation = ''
     showToMainDisplay(currentOperand.toString())
     showToSecondDisplay('')
+    isPressEqual = true;
   }
 }
 
