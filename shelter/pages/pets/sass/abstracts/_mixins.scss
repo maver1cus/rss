@@ -1,0 +1,16 @@
+@mixin wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  @media screen and (max-width: 1030px) {
+    width: 92.1875%;
+  }
+  @media screen and (max-width: 570px) {
+    width: 93.75%;
+  }
+}
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

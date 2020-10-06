@@ -1,0 +1,22 @@
+.page-header {
+  margin-top: 60px;
+  padding: 0;
+  
+  &--light {
+    margin: 0;
+    padding: 2.5% 0;
+    background-color: #fff;
+    @media screen and (max-width: 1030px) {
+      padding: 4.23728814% 0;
+    }
+    @media screen and (max-width: 570px) {
+      padding: 2.5% 0;
+    }
+  }
+}
+.page-header__wrapper {
+  @include wrapper;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

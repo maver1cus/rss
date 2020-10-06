@@ -1,0 +1,31 @@
+.pets {
+  padding: 6.66666667% 0 8.33333333% 0;
+  background-color: #F6F6F6;
+  @media screen and (max-width: 1030px) {
+    padding: 9.88700565% 0 11.0169492% 0;
+  }
+  @media screen and (max-width: 570px) {
+    padding: 13.3333333% 0 10% 0;
+  }
+}
+
+.pets__wrapper {
+  @include wrapper;
+}
+
+.pets__title {
+  margin-bottom: 6rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+  @media screen and (max-width: 570px) {
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    margin-bottom: 5.64971751%;
+  }
+}

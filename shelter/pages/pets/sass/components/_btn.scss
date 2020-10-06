@@ -1,0 +1,25 @@
+.btn {
+  display: inline-block;
+  padding: 1.5rem 4.5rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.7rem;
+  letter-spacing: 0.06em;
+  color: $color-dark-xl;
+  background-color: $color-primary;
+  border-radius: 10rem;
+  border: none;
+
+  &--secondary {
+    background-color: transparent;
+    border: .2rem solid $color-primary;
+    &:hover {
+      border-color: $color-primary-light;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $color-primary-light;
+  }
+}

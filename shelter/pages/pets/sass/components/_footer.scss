@@ -1,0 +1,54 @@
+.page-footer {
+  background: url("../../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  padding-top: 4rem;
+}
+
+.page-footer__wrapper {
+  @include wrapper;
+  display: flex;
+}
+
+.page-footer__part {
+  max-width: 30.2rem;
+  padding-top: 2rem;
+  & + .page-footer__part {
+    margin-left: 16rem;
+  }
+}
+
+.page-footer__title {
+  margin-bottom: 3.3rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.06em;
+  color: $color-light-xl;
+}
+
+.page-footer__link {
+  display: flex;
+  align-items: center;
+}
+.page-footer__icon {
+  margin-right: 2rem;
+  font-size: 0;
+}
+.page-footer__link {
+  display: flex;
+  align-items: center;
+  min-height: 4.6rem;
+  margin-bottom: 3.8rem;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+.page-footer__image {
+  margin-left: auto;
+}
