@@ -1,16 +1,49 @@
 @mixin wrapper {
   max-width: 1200px;
-  width: 90%;
+  width: 93.75%;
   margin: 0 auto;
-  @media screen and (max-width: 1030px) {
+  @include r(1279) {
     width: 92.1875%;
   }
-  @media screen and (max-width: 570px) {
+  @include r(767) {
     width: 93.75%;
   }
 }
+
 @mixin list-reset {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 0;
+}
+
+@mixin heading-h3 {
+  padding: 0;
+  margin: 0;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.05em;
+  @include r(767) {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+  }
+}
+
+@mixin paragraph-l {
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+
+@mixin r($width) {
+  @media only screen and (max-width: $width + "px") {
+    @content
+  }
 }

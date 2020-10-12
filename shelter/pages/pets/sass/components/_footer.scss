@@ -6,49 +6,102 @@
 .page-footer__wrapper {
   @include wrapper;
   display: flex;
+  justify-content: space-between;
+  @include r(1279) {
+    flex-direction: column;
+  }
+}
+.page-footer__content {
+  display: flex;
+  justify-content: space-between;
+  width: 61.6666667%;
+  @include r(1279) {
+    padding: 0 4.80225989%;
+    width: 100%;
+  }
+  @include r(767) {
+    flex-direction: column;
+  }
 }
 
 .page-footer__part {
-  max-width: 30.2rem;
-  padding-top: 2rem;
-  & + .page-footer__part {
-    margin-left: 16rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.33333333%;
+}
+
+.page-footer__part--contacts {
+  width: 37.7%;
+  .page-footer__link {
+    margin-bottom: 4.4rem;
+  }
+  @include r(1279) {
+    width: 100%;
+    margin-right: 8.47457627%;
+  }
+}
+
+.page-footer__part--loacation {
+  width: 40.8108108%;
+  .page-footer__title {
+    margin-bottom: 3.4rem;
+  }
+  .page-footer__link {
+    margin-bottom: 3.2rem;
+  }
+  @include r(1279) {
+    width: 100%;
   }
 }
 
 .page-footer__title {
-  margin-bottom: 3.3rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 3.5rem;
-  line-height: 4.5rem;
+  line-height: 4.6rem;
   letter-spacing: 0.06em;
+  color: #FFFFFF;
+  margin-bottom: 4rem;
   color: $color-light-xl;
 }
 
 .page-footer__link {
   display: flex;
   align-items: center;
-}
-.page-footer__icon {
-  margin-right: 2rem;
-  font-size: 0;
-}
-.page-footer__link {
-  display: flex;
-  align-items: center;
-  min-height: 4.6rem;
-  margin-bottom: 3.8rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 2rem;
+  line-height: 2.3rem;
   letter-spacing: 0.06em;
   color: $color-primary;
   text-decoration: none;
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.page-footer__icon {
+  margin-right: 2rem;
 }
 
 .page-footer__image {
-  margin-left: auto;
+  position: relative;
+  width: 25%;
+  height: 0;
+  padding-top: 25.8333333%;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include r(1279) {
+    width: 42.3728814%;
+    padding-top: 43.7853107%;
+    margin: 0 auto;
+  }
 }
