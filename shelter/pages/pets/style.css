@@ -1,3 +1,31 @@
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/arial.eot");
+  src: local("Arial"), url("../../assets/fonts/arial.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/arial.woff") format("woff"), url("../../assets/fonts/arial.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/arial-italic.eot");
+  src: local("Arial Italic"), url("../../assets/fonts/arial-italic.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/arial-italic.woff") format("woff"), url("../../assets/fonts/arial-italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/georgia.eot");
+  src: local("Georgia"), url("../../assets/fonts/georgia.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/georgia.woff") format("woff"), url("../../assets/fonts/georgia.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/georgia-italic.eot");
+  src: local("Georgia"), url("../../assets/fonts/georgia-italic.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/georgia-italic.woff") format("woff"), url("../../assets/fonts/georgia-italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
 * {
   box-sizing: border-box;
 }
@@ -25,7 +53,7 @@ h1, h2, h3 {
 
 .btn {
   display: inline-block;
-  padding: 1.5rem 4.5rem;
+  padding: 1.5rem 4.2rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
@@ -94,6 +122,7 @@ h1, h2, h3 {
 }
 
 .logo__sub-title {
+  padding-left: 0.4rem;
   font-family: Arial;
   font-style: normal;
   font-weight: normal;
@@ -127,7 +156,7 @@ h1, h2, h3 {
 }
 
 .main-menu__item {
-  margin-left: 3.8rem;
+  margin-left: 3.5rem;
 }
 
 .main-menu__link {
@@ -138,8 +167,14 @@ h1, h2, h3 {
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 2.4rem;
+  letter-spacing: -0.008em;
   color: #545454;
   text-decoration: none;
+}
+@media only screen and (max-width: 1279px) {
+  .main-menu__link {
+    letter-spacing: 0.01em;
+  }
 }
 .main-menu__link:hover {
   color: #292929;
@@ -206,12 +241,12 @@ h1, h2, h3 {
   }
 }
 .pets {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
   background-color: #F6F6F6;
 }
 @media only screen and (max-width: 1279px) {
   .pets {
-    padding: 10.4166667% 0 9.89583333% 0;
+    padding-bottom: 7rem;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -244,8 +279,8 @@ h1, h2, h3 {
   font-weight: normal;
   font-size: 3.5rem;
   line-height: 4.5rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 4.5rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 6rem;
   color: #545454;
   text-align: center;
 }
@@ -253,6 +288,16 @@ h1, h2, h3 {
   .pets__title {
     font-size: 2.5rem;
     line-height: 3.2rem;
+  }
+}
+@media only screen and (max-width: 1279px) {
+  .pets__title {
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .pets__title {
+    margin-bottom: 4rem;
   }
 }
 
@@ -264,7 +309,7 @@ h1, h2, h3 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 -2rem 2rem -2rem;
+  margin: 0 -2rem 3rem -2rem;
 }
 @media only screen and (max-width: 1279px) {
   .cards__list {
@@ -273,7 +318,7 @@ h1, h2, h3 {
 }
 @media only screen and (max-width: 767px) {
   .cards__list {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -295,6 +340,11 @@ h1, h2, h3 {
 .cards__navigation {
   display: flex;
   justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  .cards__navigation {
+    margin: 0 -5rem;
+  }
 }
 
 .cards__btn {
@@ -356,6 +406,7 @@ h1, h2, h3 {
   width: 100%;
   height: 0;
   padding-top: 100%;
+  font-size: 0;
 }
 .card__image img {
   position: absolute;
@@ -385,6 +436,11 @@ h1, h2, h3 {
   background: url("../../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding-top: 4rem;
 }
+@media only screen and (max-width: 1279px) {
+  .page-footer {
+    padding-top: 3rem;
+  }
+}
 
 .page-footer__wrapper {
   max-width: 1200px;
@@ -413,35 +469,50 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   width: 61.6666667%;
+  padding-top: 1.6rem;
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__content {
+    margin-bottom: 6rem;
+    padding-top: 0;
     padding: 0 4.80225989%;
     width: 100%;
   }
 }
 @media only screen and (max-width: 767px) {
   .page-footer__content {
+    padding: 0;
     flex-direction: column;
+    margin-bottom: 3.8rem;
   }
 }
 
 .page-footer__part {
   display: flex;
   flex-direction: column;
-  padding-top: 1.33333333%;
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part {
+    align-items: center;
+  }
 }
 
 .page-footer__part--contacts {
-  width: 37.7%;
+  width: 38%;
 }
 .page-footer__part--contacts .page-footer__link {
-  margin-bottom: 4.4rem;
+  margin-bottom: 3.5rem;
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__part--contacts {
     width: 100%;
-    margin-right: 8.47457627%;
+    margin-right: 5.474576%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part--contacts {
+    width: 100%;
+    margin-bottom: 4rem;
   }
 }
 
@@ -451,8 +522,25 @@ h1, h2, h3 {
 .page-footer__part--loacation .page-footer__title {
   margin-bottom: 3.4rem;
 }
+@media only screen and (max-width: 767px) {
+  .page-footer__part--loacation .page-footer__title {
+    width: 27rem;
+    margin-bottom: 3.7rem;
+  }
+}
 .page-footer__part--loacation .page-footer__link {
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.5rem;
+}
+@media only screen and (max-width: 1279px) {
+  .page-footer__part--loacation .page-footer__link {
+    margin-bottom: 3.9rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part--loacation .page-footer__link:last-child {
+    justify-content: flex-start;
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__part--loacation {
@@ -470,6 +558,13 @@ h1, h2, h3 {
   color: #FFFFFF;
   margin-bottom: 4rem;
   color: #FFFFFF;
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__title {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
 }
 
 .page-footer__link {
@@ -510,6 +605,12 @@ h1, h2, h3 {
     width: 42.3728814%;
     padding-top: 43.7853107%;
     margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 367px) {
+  .page-footer__image {
+    width: 86.6666667%;
+    padding-top: 90%;
   }
 }
 

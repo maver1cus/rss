@@ -18,7 +18,7 @@
 }
 
 .main-menu__item {
-  margin-left: 3.8rem;
+  margin-left: 3.5rem;
 }
 
 .main-menu__link {
@@ -29,8 +29,13 @@
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 2.4rem;
+  letter-spacing: -0.008em;
   color: $color-dark-l;
   text-decoration: none;
+
+  @include r(1279) {
+    letter-spacing: 0.01em;
+  }
 
   &:hover {
     color: $color-dark-3xl;

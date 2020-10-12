@@ -1,9 +1,9 @@
 .pets {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
   background-color: $color-light-l;
 
   @include r(1279) {
-    padding: 10.4166667% 0 9.89583333% 0;
+    padding-bottom: 7rem;
   }
 
   @include r(767) {
@@ -18,9 +18,17 @@
 }
 .pets__title {
   @include heading-h3;
-  margin-bottom: 4.5rem;
+  margin-bottom: 6rem;
   color: $color-dark-l;
   text-align: center;
+
+  @include r(1279) {
+    margin-bottom: 3rem;
+  }
+
+  @include r(767) {
+    margin-bottom: 4rem;
+  }
 }
 .pets__cards {
 }

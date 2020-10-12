@@ -6,13 +6,13 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 -2rem 2rem -2rem;
+  margin: 0 -2rem 3rem -2rem;
 
   @include r(1279) {
     margin-bottom: 1rem;
   }
   @include r(767) {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -39,6 +39,10 @@
 .cards__navigation {
   display: flex;
   justify-content: center;
+
+  @include r(767) {
+    margin: 0 -5rem;
+  }
 }
 
 .cards__btn {
