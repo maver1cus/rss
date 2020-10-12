@@ -1,38 +1,86 @@
 .start-screen {
-  margin-top: -12rem;
-  padding-top: 18rem;
-  background: url("../../assets/images/noise_transparent.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+  background: url('../../assets/images/noise_transparent.png'), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
 .start-screen__wrapper {
   @include wrapper;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding-top: 14.0625%;
+  @include r(1279) {
+    flex-direction: column;
+    padding-top: 19.53125%;
+  }
+  @include r(767) {
+    padding-top: 50%;
+  }
 }
 
 .start-screen__content {
-  width: 46rem;
-  margin-right: 4.2rem;
-  padding-top: 16.3rem;
+  padding-top: 13.5833333%;
+  width: 38.3333333%;
+  @include r(1279) {
+    padding-top: 0;
+    margin: 0 auto 14.1242938% auto;
+    width: 64.9717514%;
+  }
+  @include r(767) {
+    width: 100%;
+  }
 }
 
 .start-screen__title {
-  width: 31rem;
-  margin-bottom: 4rem;
+  margin-bottom: 4.2rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 4.4rem;
   line-height: 5.7rem;
   color: $color-light-xl;
+  @include r(767) {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
 }
 
 .start-screen__text {
-  margin-bottom: 41px;
-  font-family: Arial;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.5rem;
-  line-height: 2.4rem;
+  @include paragraph-l;
+  margin-bottom: 4.2rem;
   color: $color-dark-s;
+  @include r(767) {
+    text-align: center;
+  }
+}
+
+.start-screen__btn {
+  @include r(1279) {
+    display: block;
+    margin: 0 auto;
+  }
+} 
+
+.start-screen__image {
+  width: 58.1666667%;
+  height: 0;
+  padding-top: 60.6666667%;
+  position: relative;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include r(1279) {
+    width: 80.3672316%;
+    padding-top: 83.7570621%;
+    margin-left: auto;
+  }
+
+  @include r(767) {
+    width: 86.6666667%;
+    padding-top: 90.59%;
+  }
 }

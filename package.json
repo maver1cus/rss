@@ -20,5 +20,8 @@
   "homepage": "https://github.com/rolling-scopes-school/maver1cus-JS2020Q3#readme",
   "dependencies": {
     "normalize-scss": "^7.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.27.0"
   }
 }

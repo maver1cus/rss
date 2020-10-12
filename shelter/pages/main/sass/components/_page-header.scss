@@ -1,11 +1,22 @@
 .page-header {
-  height: 60px;
-  margin-top: 60px;
-  padding: 0;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  @include r(1279) {
+    top: 0;
+  }
+
 }
 .page-header__wrapper {
   @include wrapper;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;  
+  padding: 3rem 0;
+  
+  @include r(767) {
+    padding-right: 13.4375%;
+  }
 }

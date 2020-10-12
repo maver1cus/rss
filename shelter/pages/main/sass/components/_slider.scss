@@ -1,82 +1,82 @@
+
 .slider {
-  width: 100%;
   position: relative;
 }
-
 .slider__wrapper {
-  width: 108rem;
+  width: 90%;
   margin: 0 auto;
   overflow: hidden;
-}
-
-.slider__list {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.slider__item {
-  margin: 0 4.5rem;
-  padding: 3rem 3.5rem;
-  background: $color-light-s;
-  border-radius: .9rem;
-
-  &:hover {
-    background-color: $color-light-xl;
-    cursor: pointer;
+  @include r(1279) {
+    width: 80.7291667%;
+  }
+  @include r(767) {
+    width: 90%;
   }
 }
-
-.slider__image {
-  margin-bottom: 3rem;
-  font-size: 0;
+.slider__list {
+  @include list-reset;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  z-index: 2;
+  @include r(767) {
+    width: 100%;
+  }
 }
-
-.slider__title {
-  margin-bottom: 3rem;
-  font-family: Georgia;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2rem;
-  line-height: 1;
-  text-align: center;
-  letter-spacing: 0.06em;
-  color: $color-dark-l;
+.slider__item {
+  padding: 0 4.16666667%;
+  @include r(1279) {
+    padding: 0 3.44827586%;
+  }
+  @include r(767) {
+    padding: 0;
+  }
 }
-
-.slider__nav-btn {
+.slider__nvaigation {
   position: absolute;
   left: 0;
+  right: 0;
   top: 50%;
-  transform: translate(0, -50%);
-  display: block;
-  padding: 2.3rem 1.9rem;
-  font-size: 0;
-  background-color: transparent;
-  border-radius: 50%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 1;
+  @include r(767) {
+    position: static;
+    width: 68.1481481%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    transform: translate(0);
+  }
+}
+.slider__nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  background-color: $color-light-l;
   border: .2rem solid $color-primary;
-  &:active,
-  &:focus {
-    outline: none;
+  border-radius: 100px;
+  svg {
+    fill: $color-dark-3xl;
   }
-  &--next {
-    left: auto;
-    right: 0;
-  }
-
   &:hover {
-    background-color: $color-primary-l;
-    border-color: $color-primary-l;
-    cursor: pointer;
+    background-color: $color-primary;
+    cursor: pointer
   }
-
-  &--inactive {
+  &[disabled] {
+    color: $color-dark-s;
     border-color: $color-dark-s;
+    svg {
+      fill: $color-dark-s;
+    }
+
     &:hover {
-      border-color: $color-dark-s;
-      background-color: transparent;
-      cursor: auto;
+      background-color: $color-light-l;
+      cursor: default;
     }
   }
 }

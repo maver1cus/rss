@@ -1,43 +1,70 @@
 .about {
-  background-color: $color-light-xl;
-  padding: 8rem 0 10rem 0;
+  padding: 6.25% 0 7.8125% 0;
+  @include r(1279) {
+    padding: 10.4166667% 0 13.0208333% 0;
+  }
+  @include r(767) {
+    padding: 13.125% 0;
+  }
 }
-
 .about__wrapper {
-  @include wrapper;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 17.5rem;
+  width: 66.40625%;
+  margin: 0 auto;
+  @include r(1279) {
+    width: 56.9010417%;
+    flex-direction: column-reverse;
+  }
+  @include r(767) {
+    width: 84.37500%  ;
+  }
 }
-
 .about__image {
-  font-size: 0;
-  margin-right: 12rem;
-}
+  position: relative;
+  width: 35.2941176%;
+  height: 0;
+  padding-top: 48%;
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  @include r(1279) {
+    width: 68.6498856%;
+    margin: 0 auto;
+    padding-top: 93.3638444%;
+  }
 
+  @include r(767) {
+    width: 96.2962963%;
+    padding-top: 130.740741%;
+  }
+}
+.about__content {
+  width: 50.5882353%;
+  @include r(1279) {
+    width: 100%;
+    order: 1;
+    margin-bottom: 18.3066362%;
+  }
+}
 .about__title {
+  @include heading-h3;
   margin-bottom: 2.5rem;
-  font-family: Georgia;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 3.5rem;
-  line-height: 4.5rem;
-  align-items: center;
-  letter-spacing: 0.06em;
-  color: $color-light-l;
+  color: $color-dark-l;
+  @include r(767) {
+    text-align: center;
+  }
 }
-
 .about__text {
-  margin-bottom: 2.5rem;
-  font-family: Arial;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.5rem;
-  line-height: 2.4rem;
+  @include paragraph-l;
   color: $color-dark-xl;
-
-  &:last-child {
-    margin-bottom: 0;
+  margin-bottom: 2.5rem;
+  & + & {
+    margin: 0;
   }
 }

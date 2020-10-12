@@ -1,11 +1,11 @@
 .logo__title {
-  margin: 0 0 1rem 0;
-  padding: 0;
+  margin-bottom: 1rem;
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
   font-size: 3.2rem;
   line-height: 3.5rem;
+  letter-spacing: 0.06em;
   color: $color-primary;
 }
 
@@ -15,5 +15,6 @@
   font-weight: normal;
   font-size: 1.3rem;
   line-height: 1.5rem;
+  letter-spacing: 0.1em;
   color: $color-light-xl;
 }

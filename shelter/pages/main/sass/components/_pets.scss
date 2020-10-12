@@ -1,29 +1,25 @@
 .pets {
-  padding: 8rem -0px 10rem -0px;
-  background-color: #F6F6F6;
+  background-color: $color-light-l;
+  padding: 6.25% 0 7.8125% 0;
+  @include r(1279) {
+    padding: 10.4166667% 0 13.0208333% 0;
+  }
 }
-
 .pets__wrapper {
   @include wrapper;
-}
-
-.pets__title {
-  margin-bottom: 6rem;
-  font-family: Georgia;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 3.5rem;
-  line-height: 4.5rem;
   text-align: center;
-  letter-spacing: 0.06em;
-  color: $color-dark-l
 }
-
+.pets__title {
+  @include heading-h3;
+  text-align: center;
+  margin-bottom: 6rem;
+}
 .pets__slider {
   margin-bottom: 6rem;
+  @include r(767) {
+    margin-bottom: 4.2rem;
+  }
 }
-
 .pets__btn {
-  display: block;
   margin: 0 auto;
 }
