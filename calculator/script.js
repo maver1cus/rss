@@ -48,7 +48,8 @@ const choiceOperation = (operationName) => {
     fitstOperand = ''
     currentOperation = ''
     showToSecondDisplay('')
-    showToMainDisplay(currentOperand)
+    showToMainDisplay(currentOperand);
+    isPressEqual = true;
   } else if (operationName === 'sqrt' && Number(currentOperand) <= 0) {
     showError(ERROR_MESSAGE.sqrtOfNegative)
   } else if (operationName === '-' && currentOperand === '0') {
