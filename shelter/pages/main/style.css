@@ -247,7 +247,7 @@ h1, h2, h3 {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding-top: 14.0625%;
+  padding-top: 18rem;
 }
 @media only screen and (max-width: 1279px) {
   .start-screen__wrapper {
@@ -272,7 +272,7 @@ h1, h2, h3 {
 }
 
 .start-screen__content {
-  padding-top: 13.5833333%;
+  padding-top: 16.3rem;
   width: 38.3333333%;
 }
 @media only screen and (max-width: 1279px) {
@@ -357,7 +357,7 @@ h1, h2, h3 {
 }
 
 .about {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
 }
 @media only screen and (max-width: 1279px) {
   .about {
@@ -374,6 +374,7 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 850px;
   width: 66.40625%;
   margin: 0 auto;
 }
@@ -467,8 +468,8 @@ h1, h2, h3 {
 }
 
 .pets {
+  padding: 8rem 0 10rem 0;
   background-color: #F6F6F6;
-  padding: 6.25% 0 7.8125% 0;
 }
 @media only screen and (max-width: 1279px) {
   .pets {
@@ -541,6 +542,7 @@ h1, h2, h3 {
 }
 @media only screen and (max-width: 767px) {
   .slider__wrapper {
+    max-width: 27rem;
     width: 90%;
   }
 }
@@ -666,7 +668,7 @@ h1, h2, h3 {
 }
 
 .help {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
 }
 @media only screen and (max-width: 1279px) {
   .help {
@@ -794,7 +796,7 @@ h1, h2, h3 {
 }
 
 .donation {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
   background-color: #F6F6F6;
 }
 @media only screen and (max-width: 1279px) {
@@ -812,6 +814,7 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 915px;
   width: 71.484375%;
   margin: 0 auto;
 }
@@ -957,6 +960,11 @@ h1, h2, h3 {
   background: url("../../../assets/images/noise_transparent.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding-top: 4rem;
 }
+@media only screen and (max-width: 1279px) {
+  .page-footer {
+    padding-top: 3rem;
+  }
+}
 
 .page-footer__wrapper {
   max-width: 1200px;
@@ -985,35 +993,50 @@ h1, h2, h3 {
   display: flex;
   justify-content: space-between;
   width: 61.6666667%;
+  padding-top: 1.6rem;
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__content {
+    margin-bottom: 6rem;
+    padding-top: 0;
     padding: 0 4.80225989%;
     width: 100%;
   }
 }
 @media only screen and (max-width: 767px) {
   .page-footer__content {
+    padding: 0;
     flex-direction: column;
+    margin-bottom: 3.8rem;
   }
 }
 
 .page-footer__part {
   display: flex;
   flex-direction: column;
-  padding-top: 1.33333333%;
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part {
+    align-items: center;
+  }
 }
 
 .page-footer__part--contacts {
-  width: 37.7%;
+  width: 38%;
 }
 .page-footer__part--contacts .page-footer__link {
-  margin-bottom: 4.4rem;
+  margin-bottom: 3.5rem;
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__part--contacts {
     width: 100%;
-    margin-right: 8.47457627%;
+    margin-right: 5.474576%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part--contacts {
+    width: 100%;
+    margin-bottom: 4rem;
   }
 }
 
@@ -1023,8 +1046,25 @@ h1, h2, h3 {
 .page-footer__part--loacation .page-footer__title {
   margin-bottom: 3.4rem;
 }
+@media only screen and (max-width: 767px) {
+  .page-footer__part--loacation .page-footer__title {
+    width: 27rem;
+    margin-bottom: 3.7rem;
+  }
+}
 .page-footer__part--loacation .page-footer__link {
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.5rem;
+}
+@media only screen and (max-width: 1279px) {
+  .page-footer__part--loacation .page-footer__link {
+    margin-bottom: 3.9rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__part--loacation .page-footer__link:last-child {
+    justify-content: flex-start;
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 1279px) {
   .page-footer__part--loacation {
@@ -1042,6 +1082,13 @@ h1, h2, h3 {
   color: #FFFFFF;
   margin-bottom: 4rem;
   color: #FFFFFF;
+}
+@media only screen and (max-width: 767px) {
+  .page-footer__title {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
 }
 
 .page-footer__link {
@@ -1082,6 +1129,12 @@ h1, h2, h3 {
     width: 42.3728814%;
     padding-top: 43.7853107%;
     margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 367px) {
+  .page-footer__image {
+    width: 86.6666667%;
+    padding-top: 90%;
   }
 }
 

@@ -10,6 +10,7 @@
     width: 80.7291667%;
   }
   @include r(767) {
+    max-width: 27rem;
     width: 90%;
   }
 }

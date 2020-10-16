@@ -6,7 +6,7 @@
   @include wrapper;
   display: flex;
   justify-content: space-between;
-  padding-top: 14.0625%;
+  padding-top: 18rem;
   @include r(1279) {
     flex-direction: column;
     padding-top: 19.53125%;
@@ -17,7 +17,7 @@
 }
 
 .start-screen__content {
-  padding-top: 13.5833333%;
+  padding-top: 16.3rem;
   width: 38.3333333%;
   @include r(1279) {
     padding-top: 0;

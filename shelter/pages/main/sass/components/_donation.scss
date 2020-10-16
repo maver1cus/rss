@@ -1,5 +1,5 @@
 .donation {
-  padding: 6.25% 0 7.8125% 0;
+  padding: 8rem 0 10rem 0;
   background-color: $color-light-l;
   @include r(1279) {
     padding: 10.4166667% 0 13.0208333% 0;
@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 915px;
   width: 71.484375%;
   margin: 0 auto;
   @include r(1279) {
