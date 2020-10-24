@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 9px;
+}
+
+body {
+  color: #fff;
+  font-family: roboto;
+  transition: background-image 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+body::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1;
+}
+.wrap {
+  max-width: 1200px;
+  width: 90%;
+  z-index: 2;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.top {
+  height: 15rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end
+}
+.weather {
+  width: 40rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  /*width: 70%;*/
+  font-size: 1rem;
+  background-color: rgba(0,0,0,.7);
+  border-radius: 2rem;
+  padding: 1rem 3rem;
+}
+.weather__wrap {
+  display: flex;
+  align-items: stretch;
+}
+.weather__city.input {
+  font-size: 2.5rem;
+  width: 100%;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.weather__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 4rem;
+}
+.weather__image svg {
+  font-size: 1rem;
+}
+.weather-description {
+  font-size: 2rem;
+}
+.weather__note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  font-size: 1.5rem;
+}
+.weather__wind-direction {
+  display: inline-block;
+}
+.weather__note div {
+  white-space: nowrap;
+}
+.time {
+  font-size: 16rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.date {
+  text-align: center;
+  font-size: 5rem;
+}
+.row {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 2rem 0;
+}
+.input {
+  margin-left: 1rem;
+  min-width: 2rem;
+  display: inline!important;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  box-shadow: none;
+  font-size: 3rem;
+  display: flex;
+  text-align: center;
+  color: #fff;
+}
+.input::placeholder {
+  color: #fff
+}
+.input:focus,
+.input:active {
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;;
+}
+
+
+.input:focus::placeholder,
+.input:active::placeholder {
+  color: transparent;
+}
+
+.change-btn {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: transform 1s;
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+}
+.change-btn svg {
+  height: 3rem;
+}
+.change-btn:hover {
+  cursor: pointer;
+  transform: rotate(270deg);
+}
+.change-btn:hover svg path {
+  fill: #eee;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 4rem;
+}
+.bottom {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem 3rem;
+  border-radius: 1rem ;
+  background-color: rgba(0,0,0,.7);
+}
+blockquote {
+  margin: 0 auto;
+}
+blockquote p {
+  font-size: 3rem;
+  overflow: hidden;
+  text-align: justify;
+}
+blockquote cite {
+  font-size: 3rem;
+  text-align: right;
+  width: 100%;
+  display: block;
+}
+.change-quote {
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: transform 1s;
+}
+
+.change-quote:hover {
+  cursor: pointer;
+  transform: rotate(270deg);
+}
+.change-quote:hover svg {
+  fill: #eee;
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 7px;
+  }
+}
+@media (max-width: 425px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 385px) {
+  html {
+    font-size: 5px;
+  }
+}
