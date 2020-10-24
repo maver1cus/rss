@@ -7,7 +7,7 @@ const time = document.querySelector('.time'),
       changeBtn = document.querySelector('.change-btn'),
       bodyElement = document.querySelector('body'),
       city = document.querySelector('.weather__city'),
-      ONTHS  = ['Января', 'Февраля', 'Марта', 'Апреля', 'Май', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
+      MONTHS  = ['Января', 'Февраля', 'Марта', 'Апреля', 'Май', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
       DAYS_WEEK = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
       IMAGES = {
         day: ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'],
@@ -61,11 +61,11 @@ const onBlur = evt => {
 const onKeypress = (evt) => {
   if (evt.code === 'Enter') {
     evt.preventDefault()
-    if (evt.target.textContent.trim()) {
+    if (evt.target.textContent) {
       evt.target.dataset.text = evt.target.textContent;
       localStorage.setItem(evt.target.dataset.type, evt.target.textContent);
-      if (evt.target.dataset.type = 'city') {
-        getWeather(evt.target.textContent);
+      if (evt.target.dataset.type === 'city') {
+        getWeather(evt.target.dataset.text)
       }
     } else {
       evt.target.textContent = evt.target.dataset.text;
@@ -174,7 +174,9 @@ const renderWeather = data => {
   wrap.innerHTML = html;
 }
 const getWeather = async city => {
-  return await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=0b137ef9c971f6f4714730ade5c3ef77&units=metric`)
+  const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=ru&appid=0b137ef9c971f6f4714730ade5c3ef77&units=metric';
+  console.log(url);
+  return await fetch(url)
     .then(res => res.json())
     .then(data => renderWeather(data))
     .catch((err) => {

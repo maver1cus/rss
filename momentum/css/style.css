@@ -34,6 +34,7 @@ body::before {
   height: 95vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   position: relative;
 }
@@ -162,7 +163,7 @@ body::before {
   cursor: pointer;
   transform: rotate(270deg);
 }
-.change-btn:hover svg path{
+.change-btn:hover svg path {
   fill: #eee;
 }
 .center {
@@ -207,6 +208,15 @@ blockquote cite {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  transition: transform 1s;
+}
+
+.change-quote:hover {
+  cursor: pointer;
+  transform: rotate(270deg);
+}
+.change-quote:hover svg {
+  fill: #eee;
 }
 @media (max-width: 600px) {
   html {
