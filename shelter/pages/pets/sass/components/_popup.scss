@@ -1,0 +1,154 @@
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(#292929, .6);
+  z-index: 20;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.popup__content {
+  position: relative;
+  max-width: 900px;
+  width: 70.3125%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  &:hover {
+    cursor: default ;
+  }
+
+  @include r(1279) {
+    width: 82.03125%;
+  }
+
+  @include r(767) {
+    width: 75%;
+  }
+}
+.popup__image {
+  font-size: 0;
+  position: relative;
+  width: 55.5555556%;
+  padding-top: 55.5555556%;
+  border-radius: .9rem 0 0rem .9rem;
+  overflow: hidden;
+  img {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+  @include r(767) {
+    display: none;
+  }
+}
+.popup__note {
+  padding: 5rem 2rem 0 2.9rem;
+  border-radius: 0 .9rem .9rem 0;
+  background: #FAFAFA;
+  width: 44.4444444%;
+  @include r(1279) {
+    padding: 1rem .9rem 0 1.1rem;
+  }
+  @include r(767) {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .9rem;
+  }
+
+}
+.popup__name {
+  margin-bottom: 1rem;
+  font-family: Georgia;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+.popup__breed {
+  margin-bottom: 4rem;
+  font-family: Georgia;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+.popup__description {
+  margin-bottom: 4rem;
+  font-family: Georgia;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.06em;
+  color: #000000;
+
+  @include r(1279) {
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+  }
+
+}
+.popup__feature {
+  @include list-reset;
+}
+.popup__feature-item {
+  position: relative;
+  margin-bottom: 1.1rem;
+  padding-left: 1.4rem;
+  font-family: Georgia;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.06em;
+  color: #000000;
+  b {
+    font-weight: 700;
+  }
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    content: '';
+    display: block;
+    width: .4rem;
+    height: .4rem;
+    background-color: $color-primary;
+    border-right: 50%;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @include r(1279) {
+    margin-bottom: .6rem;
+  }
+}
+
+.popup__close-btn {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  transform: translate(100%, -100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+
+  @include r(767) {
+    right: 2.2rem;
+  }
+}

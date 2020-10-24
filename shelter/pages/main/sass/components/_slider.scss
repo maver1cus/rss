@@ -1,9 +1,11 @@
 
 .slider {
   position: relative;
+  width: 100%;
 }
 .slider__wrapper {
-  width: 90%;
+  position: relative;
+  width: 82.5%;
   margin: 0 auto;
   overflow: hidden;
   @include r(1279) {
@@ -14,26 +16,43 @@
     width: 90%;
   }
 }
-.slider__list {
-  @include list-reset;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 2rem;
-  z-index: 2;
-  @include r(767) {
-    width: 100%;
-  }
-}
 .slider__item {
-  padding: 0 4.16666667%;
-  @include r(1279) {
-    padding: 0 3.44827586%;
+  justify-content: center;
+  position: relative;
+  display: none;
+  animation: 0.5s ease-in-out;
+  .card {
+    margin: 0 45px;
   }
+
+  @include r(1279) {
+    .card {
+      margin: 0 20px;
+    }
+    & .card:nth-child(3) {
+      display: none;
+    }
+  }
+
   @include r(767) {
-    padding: 0;
+    & .card:nth-child(2) {
+      display: none;
+    }
   }
 }
+
+.slider__item--active,
+.slider__item--next {
+  display: flex;
+}
+
+.slider__item--next {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
 .slider__nvaigation {
   position: absolute;
   left: 0;
@@ -79,5 +98,42 @@
       background-color: $color-light-l;
       cursor: default;
     }
+  }
+}
+
+
+.to-left {
+  animation-name: left;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+.to-right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
   }
 }
