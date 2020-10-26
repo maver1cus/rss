@@ -5,8 +5,14 @@ const btnNext = document.querySelector('.cards__btn--next');
 const btnFirst = document.querySelector('.cards__btn--first')
 const btnLast = document.querySelector('.cards__btn--last')
 const bodyElement = document.querySelector('body');
+const mainMenu = document.querySelector('.main-menu');
+const mainMenuBtn = document.querySelector('.main-menu__btn');
+const mainMenuDisabledLinks = document.querySelectorAll('.main-menu__link--disabled');
+const mainMenuOverlay = document.querySelector('.main-menu__overlay');
 
-fetch("./js/pets.json")
+mainMenuDisabledLinks.forEach(link => link.addEventListener('click', evt => evt.preventDefault()));
+
+fetch("../../assets/pets.json")
   .then((res) => res.json())
   .then((pets) => {
 
@@ -33,7 +39,7 @@ fetch("./js/pets.json")
         </div>
       </div>`
       );
-      
+
     const createPopup = card => {
       const popupElement = document.createElement('div');
       popupElement.classList.add('popup');
@@ -41,7 +47,7 @@ fetch("./js/pets.json")
       popupElement.addEventListener('click', closePopup);
       return popupElement;
     }
-    
+
     const openPopup = evt => {
       console.log(fullPetsList);
       console.log(12);
@@ -50,9 +56,9 @@ fetch("./js/pets.json")
       const outElement = document.querySelector('.out');
       outElement.insertAdjacentElement('beforeend', createPopup(pet) );
       bodyElement.classList.add('lock')
-    
+
     }
-    
+
     const closePopup = (evt) => {
       const target = evt.target;
       if (target.classList.contains('popup') || target.classList.contains('popup__close-btn') || target.classList.contains('popup__close-btn-svg')) {
@@ -60,7 +66,7 @@ fetch("./js/pets.json")
         bodyElement.classList.remove('lock');
       }
     }
-    
+
     const getCardTemplate = ({name, img}) => (
       `<div class="card">
         <div class="card__image">
@@ -81,8 +87,8 @@ fetch("./js/pets.json")
       fragment.addEventListener('click', openPopup)
       return fragment;
     }
-    
-    
+
+
     const getStatePagination = (array) => {
       let countCardPage = 8;
       if (
@@ -99,7 +105,7 @@ fetch("./js/pets.json")
         currentPage: 0,
       };
     };
-    
+
     const sort863 = (pets) => {
       let list = JSON.parse(JSON.stringify(pets));
       let unique8List = [];
@@ -122,49 +128,49 @@ fetch("./js/pets.json")
         unique8List = [...unique8List, ...uniqueStepList];
       }
       list = unique8List;
-    
+
       list = sort6recursively(list);
-    
+
       return list;
     };
-    
+
     const sort6recursively = (list) => {
       const length = list.length;
-    
+
       for (let i = 0; i < length / 6; i++) {
         const stepList = list.slice(i * 6, i * 6 + 6);
-    
+
         for (let j = 0; j < 6; j++) {
           const duplicatedItem = stepList.find((item, ind) => {
             return item.name === stepList[j].name && ind !== j;
           });
-    
+
           if (duplicatedItem !== undefined) {
             const ind = i * 6 + j;
             const which8OfList = Math.trunc(ind / 8);
-    
+
             list.splice(which8OfList * 8, 0, list.splice(ind, 1)[0]);
-    
+
             sort6recursively(list);
           }
         }
       }
-    
+
       return list;
     };
-    
+
     const renderPage = (currentPage, fullPetsList, countCardPage) => {
       const start = currentPage * countCardPage;
       const end = currentPage * countCardPage + countCardPage;
-    
+
       const petsCurentPage = fullPetsList.slice(start, end);
       page.innerHTML = ''
       html = "";
-    
+
       petsCurentPage.forEach(card => page.insertAdjacentElement('beforeend', getCard(card)));
       numPage.innerText = currentPage + 1;
     };
-    
+
     const blockBtn = (currentPage, countPages) => {
       if (currentPage === countPages - 1) {
         btnNext.setAttribute("disabled", true);
@@ -173,7 +179,7 @@ fetch("./js/pets.json")
         btnNext.removeAttribute("disabled");
         btnLast.removeAttribute("disabled");
       }
-    
+
       if (currentPage <= 0) {
         btnPrev.setAttribute("disabled", true);
         btnFirst.setAttribute("disabled", true);
@@ -200,14 +206,14 @@ fetch("./js/pets.json")
       renderPage(currentPage, fullPetsList, countCardPage);
       blockBtn(currentPage, countPages);
     });
-  
+
     btnPrev.addEventListener('click', () => {
       currentPage -= 1;
       renderPage(currentPage, fullPetsList, countCardPage);
 
       blockBtn(currentPage, countPages);
     });
-  
+
     btnFirst.addEventListener('click', () => {
       currentPage = 0;
       renderPage(currentPage, fullPetsList, countCardPage);
@@ -223,3 +229,14 @@ fetch("./js/pets.json")
       blockBtn(currentPage, countPages);
     })
   });
+
+mainMenuBtn.addEventListener('click', evt => {
+  mainMenu.classList.toggle('main-menu--open')
+  evt.stopPropagation()
+});
+
+mainMenuOverlay.addEventListener('click', evt => {
+  if (evt.target.classList.contains('main-menu__overlay')) {
+    mainMenu.classList.remove('main-menu--open');
+  }
+})

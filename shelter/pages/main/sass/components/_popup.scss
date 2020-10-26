@@ -12,7 +12,10 @@
   &:hover {
     cursor: pointer;
   }
-}
+  &:hover .popup__close-btn {
+      background-color: $color-primary-light;
+    }
+  }
 .popup__content {
   position: relative;
   max-width: 900px;
@@ -24,7 +27,12 @@
   &:hover {
     cursor: default ;
   }
-
+  &:hover .btn {
+    background-color: transparent;
+  }
+  .btn:hover {
+    background-color: $color-primary-light;
+  }
   @include r(1279) {
     width: 82.03125%;
   }

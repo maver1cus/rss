@@ -1,5 +1,5 @@
 .pets {
-  padding: 8rem 0 10rem 0;
+  padding: 20rem 0 10rem 0;
   background-color: $color-light-l;
 
   @include r(1279) {
@@ -7,7 +7,7 @@
   }
 
   @include r(767) {
-    padding: 13.12500% 0;
+    padding: 16.2rem 0 4.2rem 0;
   }
 }
 

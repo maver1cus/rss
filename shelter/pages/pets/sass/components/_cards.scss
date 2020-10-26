@@ -13,6 +13,8 @@
   }
   @include r(767) {
     margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -74,11 +76,11 @@
   &:hover {
     cursor: pointer;
   }
-  
+
   &:disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
-    
+
     svg {
       fill: $color-dark-s;
     }

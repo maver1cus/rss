@@ -1,7 +1,7 @@
 const PETS = [
   {
     "name": "Jennifer",
-    "img": "../../assets/images/pets-jennifer.jpg",
+    "img": "../../assets/images/jennifer.jpg",
     "type": "Dog",
     "breed": "Labrador",
     "description": "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
@@ -12,7 +12,7 @@ const PETS = [
   },
   {
     "name": "Sophia",
-    "img": "../../assets/images/pets-sophia.jpg",
+    "img": "../../assets/images/sophia.jpg",
     "type": "Dog",
     "breed": "Shih tzu",
     "description": "Sophia here and I'm looking for my forever home to live out the best years of my life. I am full of energy. Everyday I'm learning new things, like how to walk on a leash, go potty outside, bark and play with toys and I still need some practice.",
@@ -23,7 +23,7 @@ const PETS = [
   },
   {
     "name": "Woody",
-    "img": "../../assets/images/pets-woody.jpg",
+    "img": "../../assets/images/woody.jpg",
     "type": "Dog",
     "breed": "Golden Retriever",
     "description": "Woody is a handsome 3 1/2 year old boy. Woody does know basic commands and is a smart pup. Since he is on the stronger side, he will learn a lot from your training. Woody will be happier when he finds a new family that can spend a lot of time with him.",
@@ -34,7 +34,7 @@ const PETS = [
   },
   {
     "name": "Scarlett",
-    "img": "../../assets/images/pets-scarlett.jpg",
+    "img": "../../assets/images/scarlett.jpg",
     "type": "Dog",
     "breed": "Jack Russell Terrier",
     "description": "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
@@ -45,7 +45,7 @@ const PETS = [
   },
   {
     "name": "Katrine",
-    "img": "../../assets/images/pets-katrine.jpg",
+    "img": "../../assets/images/katrine.jpg",
     "type": "Cat",
     "breed": "British Shorthair",
     "description": "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
@@ -56,7 +56,7 @@ const PETS = [
   },
   {
     "name": "Timmy",
-    "img": "../../assets/images/pets-timmy.jpg",
+    "img": "../../assets/images/timmy.jpg",
     "type": "Cat",
     "breed": "British Shorthair",
     "description": "Timmy is an adorable grey british shorthair male. He loves to play and snuggle. He is neutered and up to date on age appropriate vaccinations. He can be chatty and enjoys being held. Timmy has a lot to say and wants a person to share his thoughts with.",
@@ -67,7 +67,7 @@ const PETS = [
   },
   {
     "name": "Freddie",
-    "img": "../../assets/images/pets-freddie.jpg",
+    "img": "../../assets/images/freddie.jpg",
     "type": "Cat",
     "breed": "British Shorthair",
     "description": "Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.",
@@ -78,7 +78,7 @@ const PETS = [
   },
   {
     "name": "Charly",
-    "img": "../../assets/images/pets-charly.jpg",
+    "img": "../../assets/images/charly.jpg",
     "type": "Dog",
     "breed": "Jack Russell Terrier",
     "description": "This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.",
@@ -90,7 +90,14 @@ const PETS = [
 ];
 const bodyElement = document.querySelector('body');
 const sliderWrapper = document.querySelector('.slider__wrapper');
+const mainMenu = document.querySelector('.main-menu');
+const mainMenuBtn = document.querySelector('.main-menu__btn')
+const mainMenuDisabledLinks = document.querySelectorAll('.main-menu__link--disabled');
+const mainMenuOverlay = document.querySelector('.main-menu__overlay');
+
 let isEnabled = true;
+
+mainMenuDisabledLinks.forEach(link => link.addEventListener('click', evt => evt.preventDefault()));
 
 const getCountCardsInSliderItem = () => {
   const widthScreen = document.documentElement.clientWidth;
@@ -109,8 +116,8 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const getPopupTemplate = ({name, img, breed, description, age, inoculations, diseases, parasites}) => (
-  `<div class="popup__content">
+const getPopupTemplate = ({name, img, breed, description, age, inoculations, diseases, parasites}) => (`
+  <div class="popup__content">
     <div class="popup__image">
       <img src="${img}" alt="${name}">
     </div>
@@ -132,6 +139,7 @@ const getPopupTemplate = ({name, img, breed, description, age, inoculations, dis
     </div>
   </div>`
   );
+
 const closePopup = (evt) => {
   const target = evt.target;
   if (target.classList.contains('popup') || target.classList.contains('popup__close-btn') || target.classList.contains('popup__close-btn-svg')) {
@@ -235,28 +243,16 @@ document.querySelector('.slider__nav-btn--next').addEventListener('click', funct
 sliderWrapper.innerHTML = '';
 sliderWrapper.insertAdjacentElement('beforeend', createSliderItem('slider__item--active'));
 
-// const ITEMS_PAGE = ['item 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7', 'item 8'];
-//
-// const countCardInPage = 3;
-// const countPage = 16;
-// let ALL = [];
-// const pages = [];
-// for (let i = 0; i < 6; i++) {
-//   ALL.push(...ITEMS_PAGE);
-// }
-// console.log(ALL);
-//
-// const createPage = () => {
-//   const page = new Set();
-//   while(page.size < countCardInPage) {
-//     const index = getRandomInt(0, ALL.length);
-//     page.add(ALL.splice(index, 1).join(''));
-//   }
-//   return page;
-// }
-//
-// for (let i = 0; i < 16; i++) {
-//   pages.push(createPage());
-// }
-//
-// console.log(pages);
+mainMenuBtn.addEventListener('click', evt => {
+  mainMenu.classList.toggle('main-menu--open')
+  evt.stopPropagation()
+});
+
+mainMenuOverlay.addEventListener('click', evt => {
+  if (evt.target.classList.contains('main-menu__overlay')) {
+    mainMenu.classList.remove('main-menu--open');
+  }
+})
+
+
+

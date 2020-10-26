@@ -1,17 +1,22 @@
 .page-header {
   z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #F6F6F6;
   @include r(1279) {
-    top: 0;
   }
 
 }
 .page-header__wrapper {
   @include wrapper;
+  position: sticky;
+  top: 0px;
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   padding: 3rem 0;
-  
+
   @include r(767) {
     padding-right: 13.4375%;
   }

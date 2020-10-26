@@ -6,13 +6,9 @@
   @include wrapper;
   display: flex;
   justify-content: space-between;
-  padding-top: 18rem;
+  padding-top: 15rem;
   @include r(1279) {
     flex-direction: column;
-    padding-top: 19.53125%;
-  }
-  @include r(767) {
-    padding-top: 50%;
   }
 }
 
@@ -23,6 +19,7 @@
     padding-top: 0;
     margin: 0 auto 14.1242938% auto;
     width: 64.9717514%;
+    text-align: center;
   }
   @include r(767) {
     width: 100%;
@@ -55,10 +52,10 @@
 
 .start-screen__btn {
   @include r(1279) {
-    display: block;
+    display: inline-block;
     margin: 0 auto;
   }
-} 
+}
 
 .start-screen__image {
   width: 58.1666667%;
