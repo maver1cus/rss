@@ -1,0 +1,94 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  --keyboard-bg-color: #bbb;
+  --key-bg-color: #eee;
+  --key-color: #808080;
+  --lock-on-color: #333;
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 100vh;
+}
+.output {
+  width: 100%;
+  flex: 100%;
+  margin-bottom: auto;
+}
+.output:focus {
+  outline: none;
+}
+.keyboard {
+  max-width: 90rem;
+  margin: 2rem auto;
+  background-color: var(--keyboard-bg-color);
+  width: 125rem;
+  padding: 2rem 1rem;
+  border-radius: 1.5rem;
+  justify-content: center;
+  box-shadow: 0 2.7rem 2.4rem 0 rgba(0, 0, 0, 0.2), 0 4rem 7.7rem 0 rgba(0, 0, 0, 0.22);
+
+}
+.keyboard__row {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+.keyboard__key {
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--key-bg-color);
+  font-size: 1.6rem;
+  width: 4rem;
+  height: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 .4rem;
+  padding: 0 .2rem;
+  border-radius: 1rem;
+  box-shadow: 0 .5rem 0 rgba(0, 0, 0, 0.2);
+  line-height: 1;
+
+}
+.keyboard__row {
+  padding: .5rem 0;
+}
+.keyboard__key:focus,
+.keyboard__key:active {
+  outline: none;
+}
+.keyboard__key[data-type="functional"] {
+  width: 8rem;
+}
+.keyboard__key[data-code="Space"] {
+  width: 21.5rem;
+}
+.keyboard__key[data-code="ArrowLeft"],
+.keyboard__key[data-code="ArrowRight"],
+.keyboard__key[data-code="ArrowUp"],
+.keyboard__key[data-code="ArrowDown"] {
+  width: 4.6rem;
+}
+.keyboard__key[data-code="Backspace"] {
+  width: 11rem;
+}
+
+.active {
+  cursor: pointer;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+  transform: translateY(3px);
+  transition: all 0.1s ease-in-out;
+  background-color: #808080;
+}
+
+
+/*# sourceMappingURL=1.46b19c819c4690b61d62.css.map*/
