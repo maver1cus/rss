@@ -27,6 +27,34 @@ const cssLoaders = extra => {
   return loaders
 }
 
+const babelOptions = preset => {
+  const opts = {
+    presets: [
+      '@babel/preset-env'
+    ],
+    plugins: [
+      '@babel/plugin-proposal-class-properties'
+    ]
+  }
+
+  if (preset) {
+    opts.presets.push(preset)
+  }
+  return opts
+}
+
+const jsLoaders = () => {
+  const loaders = [{
+    loader: 'babel-loader',
+    options: babelOptions()
+  }]
+
+  // if (isDev) {
+  //   loaders.push('eslint-loader')
+  // }
+
+  return loaders
+}
 
 module.exports = {
   entry: './src/js/app.js',
@@ -65,6 +93,11 @@ module.exports = {
       {
         test: /\.css$/i,
         use: cssLoaders()
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: jsLoaders()
       }
     ]
   }
