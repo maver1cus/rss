@@ -6,6 +6,15 @@ const DEFAULT_LANGUAGE = 'ru'
 const templateMain = `
   <h1 class="title">RSS Virtual Keyboard</h1>
   <h3 class="subtitle">Windows keyboard that has been made under OS Ubuntu</h3>
+  <div>
+    <audio data-key="ru" src="../../assets/sounds/ru.mp3"></audio>
+    <audio data-key="en" src="../../assets/sounds/en.mp3"></audio>
+    <audio data-key="backspace" src="../../assets/sounds/backspace.mp3"></audio>
+    <audio data-key="del" src="../../assets/sounds/del.mp3"></audio>
+    <audio data-key="shift" src="../../assets/sounds/shift.mp3"></audio>
+    <audio data-key="capslock" src="../../assets/sounds/capslock.mp3"></audio>
+    <audio data-key="enter" src="../../assets/sounds/enter.mp3"></audio>
+  </div>
 `
 
 const main = createElement('main', null, templateMain)
@@ -41,6 +50,7 @@ export default class Keyboard {
     this.keyboardElement = createElement('div', 'keyboard hide', null, ['language', this.state.language])
     main.insertAdjacentElement('beforeend', this.output);
     main.insertAdjacentElement('beforeend', this.keyboardElement);
+    main.insertAdjacentHTML('beforeend', `<button class="open">открыть клавиатуру</button>`);
     this.output.addEventListener('click', () => {
       this.keyboardElement.classList.remove('hide');
     })
@@ -57,6 +67,18 @@ export default class Keyboard {
 
     this.recognition.lang = this.state.language === 'ru' ? 'ru-Ru' : 'en-US';
 
+  }
+  playSound(code) {
+    let playSound = this.state.language === 'ru' ? 'ru' : 'en';
+    if (code.match(/Shift/)) playSound = 'shift';
+    if (code.match(/Enter/)) playSound = 'enter';
+    if (code.match(/Caps/)) playSound = 'capslock';
+    if (code.match(/Backspace/)) playSound = 'backspace';
+    if (code.match(/Del/)) playSound = 'del';
+    const audio = document.querySelector(`audio[data-key="${playSound}"]`);
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play();
   }
 
   initMic() {
@@ -196,6 +218,7 @@ export default class Keyboard {
     document.addEventListener('keyup', this.handleEvent);
     this.keyboardElement.onmousedown = this.preHandleEvent;
     this.keyboardElement.onmouseup = this.preHandleEvent;
+    document.querySelector('.open').addEventListener('click', () => this.keyboardElement.classList.remove('hide'))
   }
 
   preHandleEvent = (e) => {
@@ -219,21 +242,17 @@ export default class Keyboard {
 
     if (type.match(/keydown|mousedown/)) {
       if (!type.match(/mouse/)) e.preventDefault();
-
       if (code.match(/Close/)) this.keyboardElement.classList.add('hide')
       if (code.match(/Switch/)) this.switchLanguage();
-
       if (code.match(/Shift/)) {
         this.state.pressShift = !this.state.pressShift
         this.state.shiftNum = !this.state.shiftNum;
         this.state.shiftChar = !this.state.shiftChar;
       }
-
       if (code.match(/Caps/)) {
         this.state.pressCaps = !this.state.pressCaps
         this.state.shiftChar = !this.state.shiftChar;
       }
-
       if (code.match(/Mic/)) {
         this.state.pressMic = !this.state.pressMic
         if (this.state.pressMic) {
@@ -241,18 +260,14 @@ export default class Keyboard {
         } else {
           this.stopMic();
         }
-
       }
       if (code.match(/Volume/)) this.state.pressVolume = !this.state.pressVolume;
       if (code.match(/Control/)) this.state.pressCtrl = true;
       if (code.match(/Alt/)) this.state.pressAlt = true;
-
       if (code.match(/Shift|Caps|Switch/)) this.render();
-
+      if (this.state.pressVolume) this.playSound(code);
       this.printToOutput(keyObj);
-
       keyObj.button.classList.add('active');
-
 
     } else if (e.type.match(/keyup|mouseup/)) {
       if (code.match(/Control/)) this.state.pressCtrl = false;

@@ -44,16 +44,10 @@ const babelOptions = preset => {
 }
 
 const jsLoaders = () => {
-  const loaders = [{
+  return [{
     loader: 'babel-loader',
     options: babelOptions()
   }]
-
-  // if (isDev) {
-  //   loaders.push('eslint-loader')
-  // }
-
-  return loaders
 }
 
 module.exports = {
@@ -81,7 +75,8 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/assets/favicon.ico'),
           to: path.resolve(__dirname, 'dist/favicon.ico'),
-        }
+        },
+        { from: './src/assets/', to: 'assets' },
       ]
     }),
     new miniCssExtractPlugin({
