@@ -21,10 +21,10 @@ const main = createElement('main', null, templateMain)
 
 export default class Keyboard {
   constructor(rowOrder) {
-    this.first = false;
     this.rowsOrder = rowOrder;
-    this.keysPressed = {};
+    this.clipboard = '';
     this.keyboardElement = null;
+    this.positionCursorInStart = true;
     this.state = {
       pressCaps: false,
       pressShift: false,
@@ -38,7 +38,7 @@ export default class Keyboard {
     }
   }
 
-  init() {
+  init = () => {
     this.keyBase = language[this.state.language];
     this.output = createElement('textarea', 'output', null,
       ['placeholder', 'Start type something...'],
@@ -68,7 +68,8 @@ export default class Keyboard {
     this.recognition.lang = this.state.language === 'ru' ? 'ru-Ru' : 'en-US';
 
   }
-  playSound(code) {
+
+  playSound = code => {
     let playSound = this.state.language === 'ru' ? 'ru' : 'en';
     if (code.match(/Shift/)) playSound = 'shift';
     if (code.match(/Enter/)) playSound = 'enter';
@@ -81,7 +82,7 @@ export default class Keyboard {
     audio.play();
   }
 
-  initMic() {
+  initMic = () => {
     this.recognition = null;
     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     this.recognition = new SpeechRecognition();
@@ -123,7 +124,8 @@ export default class Keyboard {
     this.recognition.stop();
     this.recognition = null;
   }
-  render() {
+
+  render = () => {
     this.keyBase = language[this.state.language];
     this.keyButtons.forEach(button => {
       const keyObj = this.keyBase.find((key) => key.code === button.code);
@@ -144,59 +146,113 @@ export default class Keyboard {
     })
   }
 
-  printToOutput({code, isFnKey})  {
-    let cursorPos = this.output.selectionStart;
+  printToOutput = ({code, isFnKey}) => {
+    let cursorPosStart = this.output.selectionStart;
     let cursorPosEnd = this.output.selectionEnd;
-
-    const left = this.output.value.slice(0, cursorPos);
+    const left = this.output.value.slice(0, cursorPosStart);
     const right = this.output.value.slice(cursorPosEnd);
-
-
+    const selection = this.output.value.slice(cursorPosStart, cursorPosEnd);
     const textHandlers = {
       Tab: () => {
         this.output.value = `${left}\t${right}`;
-        cursorPos += 1;
+        cursorPosStart += 1;
+        cursorPosEnd = cursorPosStart;
       },
       ArrowLeft: () => {
-        cursorPos = cursorPos - 1 >= 0 ? cursorPos - 1 : 0;
+        if (this.state.pressShift) {
+          if (this.positionCursorInStart) {
+            cursorPosStart = cursorPosStart - 1 >= 0 ? cursorPosStart - 1 : 0;
+            if (cursorPosStart > cursorPosEnd) {
+              [cursorPosStart, cursorPosEnd] = [cursorPosEnd, cursorPosStart]
+              this.positionCursorInStart = false;
+            }
+          } else {
+            cursorPosEnd -=1;
+            if (cursorPosStart > cursorPosEnd) {
+              [cursorPosStart, cursorPosEnd] = [cursorPosEnd, cursorPosStart]
+              this.positionCursorInStart = true;
+            }
+          }
+        } else {
+          cursorPosStart = cursorPosStart - 1 >= 0 ? cursorPosStart - 1 : 0;
+          cursorPosEnd = cursorPosStart;
+        }
+
       },
       ArrowRight: () => {
-        cursorPos += 1;
+        if (this.state.pressShift) {
+          if (this.positionCursorInStart) {
+            cursorPosStart += 1;
+            if (cursorPosStart > cursorPosEnd) {
+              [cursorPosStart, cursorPosEnd] = [cursorPosEnd, cursorPosStart]
+              this.positionCursorInStart = false;
+            }
+          } else {
+            cursorPosEnd += 1;
+          }
+
+        } else {
+          cursorPosStart += 1;
+          cursorPosEnd = cursorPosStart;
+        }
+
+
       },
       ArrowUp: () => {
-        const positionFromLeft = this.output.value.slice(0, cursorPos).match(/(\n).*$(?!\1)/g) || [[1]];
-        cursorPos -= positionFromLeft[0].length;
+        const positionFromLeft = this.output.value.slice(0, cursorPosStart).match(/(\n).*$(?!\1)/g) || [[1]];
+        cursorPosStart -= positionFromLeft[0].length;
+        cursorPosEnd = cursorPosStart
       },
       ArrowDown: () => {
-        const positionFromLeft = this.output.value.slice(cursorPos).match(/^.*(\n).*(?!\1)/) || [[1]];
-        cursorPos += positionFromLeft[0].length;
+        const positionFromLeft = this.output.value.slice(cursorPosStart).match(/^.*(\n).*(?!\1)/) || [[1]];
+        cursorPosStart += positionFromLeft[0].length;
+        cursorPosEnd = cursorPosStart;
       },
       Enter: () => {
         this.output.value = `${left}\n${right}`;
-        cursorPos += 1;
+        cursorPosStart += 1;
+        cursorPosEnd = cursorPosStart;
+        console.log('sdadsa')
       },
       Delete: () => {
         this.output.value = `${left}${right.slice(1)}`;
       },
       Backspace: () => {
         this.output.value = `${left.slice(0, -1)}${right}`;
-        cursorPos -= 1;
+        cursorPosStart -= 1
+        cursorPosEnd = cursorPosStart;
       },
       Space: () => {
         this.output.value = `${left} ${right}`;
-        cursorPos += 1;
+        cursorPosStart += 1;
+        cursorPosEnd = cursorPosStart;
       },
     };
     if (textHandlers[code]) {
       textHandlers[code]()
-
-      this.output.setSelectionRange(cursorPos, cursorPos)
+      this.output.setSelectionRange(cursorPosStart, cursorPosEnd)
     } else if (!isFnKey) {
-      cursorPos += 1;
-      const char = this.keyButtons.find(key => key.code === code).char
-      this.output.value = `${left}${char}${right}`;
+      if (this.state.pressCtrl  && code === 'KeyC') {
+        this.clipboard = selection;
+      } else if (this.state.pressCtrl && code === 'KeyX') {
+        this.clipboard = selection;
+        this.output.value = `${left}${right}`;
+        cursorPosEnd = cursorPosStart;
+      } else if ((this.state.pressCtrl  && code === 'KeyV')) {
+        this.output.value = `${left}${this.clipboard}${right}`;
+        cursorPosStart = cursorPosStart + this.clipboard.length;
+        cursorPosEnd = cursorPosStart;
+      } else if (this.state.pressCtrl  && code === 'KeyA') {
+        cursorPosStart = 0;
+        cursorPosEnd = this.output.value.length;
+      } else {
+        cursorPosStart += 1;
+        const char = this.keyButtons.find(key => key.code === code).char
+        this.output.value = `${left}${char}${right}`;
+        cursorPosEnd = cursorPosStart;
+      }
     }
-    this.output.setSelectionRange(cursorPos, cursorPos)
+    this.output.setSelectionRange(cursorPosStart, cursorPosEnd)
   }
 
   generateLayout = () => {
@@ -221,7 +277,7 @@ export default class Keyboard {
     document.querySelector('.open').addEventListener('click', () => this.keyboardElement.classList.remove('hide'))
   }
 
-  preHandleEvent = (e) => {
+  preHandleEvent = e => {
     e.stopPropagation();
     const keyDiv = e.target.closest('.keyboard__key');
     if (!keyDiv) return;
@@ -233,7 +289,7 @@ export default class Keyboard {
     });
   }
 
-  handleEvent = (e) => {
+  handleEvent = e => {
     if (e.stopPropagation) e.stopPropagation();
     const {code, type} = e;
     const keyObj = this.keyButtons.find((key) => key.code === code);
