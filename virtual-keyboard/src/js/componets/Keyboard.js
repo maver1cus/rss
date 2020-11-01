@@ -14,12 +14,14 @@ export default class Keyboard {
   constructor(rowOrder) {
     this.rowsOrder = rowOrder;
     this.keysPressed = {};
-    this.container = null;
+    this.keyboardElement = null;
     this.state = {
       pressCaps: false,
       pressShift: false,
       pressAlt: false,
       pressCtrl: false,
+      pressMic: false,
+      pressVolume: false,
       language: localStorage.getItem('lang') ?? DEFAULT_LANGUAGE,
       shiftNum: true,
       shiftChar: true
@@ -35,9 +37,12 @@ export default class Keyboard {
       ['spellcheck', false],
       ['autocorrect', 'off']);
 
-    this.container = createElement('div', 'keyboard', null, ['language', this.state.language])
+    this.keyboardElement = createElement('div', 'keyboard hide', null, ['language', this.state.language])
     main.insertAdjacentElement('beforeend', this.output);
-    main.insertAdjacentElement('beforeend', this.container);
+    main.insertAdjacentElement('beforeend', this.keyboardElement);
+    this.output.addEventListener('click', () => {
+      this.keyboardElement.classList.remove('hide');
+    })
     document.body.insertAdjacentElement('afterbegin', main);
     return this;
   }
@@ -59,12 +64,13 @@ export default class Keyboard {
       let showSymbol = 'mainSymbol';
 
       if (button.type === 'number' ) {
-        showSymbol = this.state.shiftNum ? 'mainSymbol' : 'shift'
+        showSymbol = this.state.shiftNum ? 'mainSymbol' : 'shift';
       }
       if (button.type === 'char') {
         showSymbol = this.state.shiftChar ? 'mainSymbol' : 'shift'
       }
-      this.char = button[showSymbol];
+
+      button.char = button[showSymbol];
       button.button.innerHTML = button[showSymbol];
     })
   }
@@ -136,13 +142,13 @@ export default class Keyboard {
           rowElement.appendChild(keyButton.button);
         }
       });
-      this.container.appendChild(rowElement);
+      this.keyboardElement.appendChild(rowElement);
     });
 
     document.addEventListener('keydown', this.handleEvent);
     document.addEventListener('keyup', this.handleEvent);
-    this.container.onmousedown = this.preHandleEvent;
-    this.container.onmouseup = this.preHandleEvent;
+    this.keyboardElement.onmousedown = this.preHandleEvent;
+    this.keyboardElement.onmouseup = this.preHandleEvent;
   }
 
   preHandleEvent = (e) => {
@@ -166,6 +172,8 @@ export default class Keyboard {
 
     if (type.match(/keydown|mousedown/)) {
       if (!type.match(/mouse/)) e.preventDefault();
+
+      if (code.match(/Close/)) this.keyboardElement.classList.add('hide')
       if (code.match(/Switch/)) this.switchLanguage();
 
       if (code.match(/Shift/)) {
@@ -179,6 +187,8 @@ export default class Keyboard {
         this.state.shiftChar = !this.state.shiftChar;
       }
 
+      if (code.match(/Mic/)) this.state.pressMic = !this.state.pressMic;
+      if (code.match(/Volume/)) this.state.pressVolume = !this.state.pressVolume;
       if (code.match(/Control/)) this.state.pressCtrl = true;
       if (code.match(/Alt/)) this.state.pressAlt = true;
 
@@ -194,7 +204,9 @@ export default class Keyboard {
       if (code.match(/Alt/)) this.state.pressAlt = false;
 
       if ( (code.match(/Shift/) && this.state.pressShift) ||
-           (code.match(/Caps/) && this.state.pressCaps)
+           (code.match(/Caps/) && this.state.pressCaps) ||
+           (code.match(/Mic/) && this.state.pressMic) ||
+           (code.match(/Volume/) && this.state.pressVolume)
       ) return;
 
       keyObj.button.classList.remove('active');

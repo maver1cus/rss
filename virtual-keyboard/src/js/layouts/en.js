@@ -77,7 +77,7 @@ export default [
     type: 'number'
   },
   {
-    mainSymbol: 'Backspace',
+    mainSymbol: '<i class="fas fa-backspace"></i>',
     shift: '',
     code: 'Backspace',
     type: 'functional'
@@ -89,7 +89,7 @@ export default [
     type: 'functional'
   },
   {
-    mainSymbol: 'Tab',
+    mainSymbol: '<span class="material-icons">keyboard_tab</span>',
     shift: '',
     code: 'Tab',
     type: 'functional'
@@ -164,10 +164,10 @@ export default [
     mainSymbol: ']',
     shift: '}',
     code: 'BracketRight',
-    type: 'functional'
+    type: 'number'
   },
   {
-    mainSymbol: 'Enter',
+    mainSymbol: '<i class="fas fa-sign-in-alt"></i>',
     shift: '',
     code: 'Enter',
     type: 'functional'
@@ -339,7 +339,7 @@ export default [
     type: 'functional'
   },
   {
-    mainSymbol: ' ',
+    mainSymbol: '<span class="material-icons">space_bar</span>',
     shift: '',
     code: 'Space',
     type: 'functional'
@@ -384,6 +384,24 @@ export default [
     mainSymbol: 'en',
     shift: 'ru',
     code: 'Switch',
+    type: 'functional'
+  },
+  {
+    mainSymbol: '<span class="material-icons">mic</span>',
+    shift: '<span class="material-icons">mic_off</span>',
+    code: 'Mic',
+    type: 'functional'
+  },
+  {
+    mainSymbol: '<span class="material-icons">volume_up</span>',
+    shift: '<span class="material-icons">volume_off</span>',
+    code: 'Volume',
+    type: 'functional'
+  },
+  {
+    mainSymbol: '<i class="far fa-times-circle"></i>',
+    shift: '',
+    code: 'Close',
     type: 'functional'
   }
 ];

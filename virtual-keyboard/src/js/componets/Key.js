@@ -8,7 +8,7 @@ export default class Key {
     this.char = mainSymbol;
     this.mainSymbol = mainSymbol;
     this.shift = shift;
-    this.isFnKey = Boolean(mainSymbol.match(/Ctrl|arr|Alt|Shift|Tab|Back|Del|Enter|Caps|ru|en/));
+    this.isFnKey = type === 'functional';
 
     this.button = createElement('button', 'keyboard__key', this.mainSymbol, ['code', this.code], ['fn', this.isFnKey], ['type', this.type]);
   }
