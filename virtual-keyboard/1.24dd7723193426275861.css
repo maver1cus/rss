@@ -8,6 +8,9 @@ body {
   --key-color: #808080;
   --lock-on-color: #333;
   min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 main {
   display: flex;
@@ -15,24 +18,32 @@ main {
   justify-content: stretch;
   min-height: 100vh;
 }
+.material-icons {
+  font-size: 2.4rem;
+}
 .output {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto auto auto;
   flex: 100%;
-  margin-bottom: auto;
 }
 .output:focus {
   outline: none;
 }
 .keyboard {
-  max-width: 90rem;
+  max-width: 125rem;
+  width: 90%;
   margin: 2rem auto;
   background-color: var(--keyboard-bg-color);
-  width: 125rem;
   padding: 2rem 1rem;
   border-radius: 1.5rem;
   justify-content: center;
   box-shadow: 0 2.7rem 2.4rem 0 rgba(0, 0, 0, 0.2), 0 4rem 7.7rem 0 rgba(0, 0, 0, 0.22);
+  transition: transform 1s;
+  z-index: 20;
+}
 
+.keyboard.hide {
+  transform: translateY(200%);
 }
 .keyboard__row {
   display: flex;
@@ -45,15 +56,15 @@ main {
   align-items: center;
   justify-content: center;
   background-color: var(--key-bg-color);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   width: 4rem;
   height: 5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 .4rem;
-  padding: 0 .2rem;
+  margin: 0 .2rem;
+  padding: 0 .1rem;
   border-radius: 1rem;
   box-shadow: 0 .5rem 0 rgba(0, 0, 0, 0.2);
   line-height: 1;
@@ -89,6 +100,32 @@ main {
   transition: all 0.1s ease-in-out;
   background-color: #808080;
 }
+.keyboard__key[data-code="Mic"],
+.keyboard__key[data-code="Volume"],
+.keyboard__key[data-code="Close"] {
+  width: 4rem;
+
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 5px;
+  }
+  .keyboard {
+    padding: .1rem;
+    width: 100%;
+  }
+  .keyboard__key {
+    font-size: 2.3rem;
+  }
+}
+.open {
+  position: fixed;
+  z-index: 1;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 
-/*# sourceMappingURL=1.46b19c819c4690b61d62.css.map*/
+/*# sourceMappingURL=1.24dd7723193426275861.css.map*/
