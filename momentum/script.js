@@ -29,7 +29,7 @@ const PATH_TO_BACKROUNDS = 'assets/images/'
 
 const getCurrentDate = () => {
   const currentDate = new Date(),
-    day = currentDate.getDate() < 10 ? `0{currentDate.getDate()}` : currentDate.getDate(),
+    day = currentDate.getDate() < 10 ? `0${currentDate.getDate()}` : currentDate.getDate(),
     month = MONTHS[currentDate.getMonth()],
     dayWeek = DAYS_WEEK[currentDate.getDay()];
   date.innerHTML = `${dayWeek}, ${day} ${month}`;
