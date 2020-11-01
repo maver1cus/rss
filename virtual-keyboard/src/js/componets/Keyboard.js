@@ -12,6 +12,7 @@ const main = createElement('main', null, templateMain)
 
 export default class Keyboard {
   constructor(rowOrder) {
+    this.first = false;
     this.rowsOrder = rowOrder;
     this.keysPressed = {};
     this.keyboardElement = null;
@@ -44,6 +45,7 @@ export default class Keyboard {
       this.keyboardElement.classList.remove('hide');
     })
     document.body.insertAdjacentElement('afterbegin', main);
+    this.initMic();
     return this;
   }
 
@@ -52,8 +54,53 @@ export default class Keyboard {
     let langIdx = langAbbr.indexOf(this.state.language);
     this.state.language = langIdx + 1 < langAbbr.length ? langAbbr[langIdx += 1] : langAbbr[langIdx -= langIdx];
     localStorage.setItem('lang', this.state.language);
+
+    this.recognition.lang = this.state.language === 'ru' ? 'ru-Ru' : 'en-US';
+
   }
 
+  initMic() {
+    this.recognition = null;
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    this.recognition = new SpeechRecognition();
+
+    this.recognition.interimResults = true;
+    this.recognition.lang = this.state.language === 'ru' ? 'ru-Ru' : 'en-US';
+
+    this.recognition.addEventListener('result', e => {
+      const transcript = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('');
+
+      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩') + ' ';
+      if (e.results[0].isFinal) {
+        let cursorPos = this.output.selectionStart;
+        let cursorPosEnd = this.output.selectionEnd;
+
+        const left = this.output.value.slice(0, cursorPos);
+        const right = this.output.value.slice(cursorPosEnd);
+        this.output.value = `${left}${poopScript}${right}`;
+        cursorPos += poopScript.length;
+        this.output.setSelectionRange(cursorPos, cursorPos)
+      }
+    });
+
+    this.recognition.addEventListener('end', () => {
+      if (this.state.pressMic) this.recognition.start();
+    });
+  }
+
+  startMic = () => {
+    this.initMic();
+    this.recognition.start();
+  }
+
+  stopMic = () => {
+    this.recognition.removeEventListener('end', this.startMic);
+    this.recognition.stop();
+    this.recognition = null;
+  }
   render() {
     this.keyBase = language[this.state.language];
     this.keyButtons.forEach(button => {
@@ -187,7 +234,15 @@ export default class Keyboard {
         this.state.shiftChar = !this.state.shiftChar;
       }
 
-      if (code.match(/Mic/)) this.state.pressMic = !this.state.pressMic;
+      if (code.match(/Mic/)) {
+        this.state.pressMic = !this.state.pressMic
+        if (this.state.pressMic) {
+          this.startMic();
+        } else {
+          this.stopMic();
+        }
+
+      }
       if (code.match(/Volume/)) this.state.pressVolume = !this.state.pressVolume;
       if (code.match(/Control/)) this.state.pressCtrl = true;
       if (code.match(/Alt/)) this.state.pressAlt = true;
